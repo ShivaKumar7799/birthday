@@ -128,7 +128,7 @@ const MemoryMatchGame = ({ onComplete }) => {
             You matched all cards in just <strong className="text-amber-300 text-lg">{moves} moves</strong>! Level 1 Complete! 👑
           </p>
           <p className="text-xs sm:text-sm text-amber-200 mt-3 font-semibold animate-pulse">
-            ✨ Moving to Step 3: Shiva Kumar Love Quiz... 💕
+            ✨ Moving to Step 3: Loved Ones' Quiz... 💕
           </p>
         </div>
       )}

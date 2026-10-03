@@ -88,20 +88,20 @@ const LoveQuiz = ({ onComplete }) => {
     if (score === CONFIG.quizQuestions.length) {
       return {
         title: "👑 100% Soulmate Perfection!",
-        badge: "Shiva Kumar's Certified Queen & Soulmate",
-        message: "You know Shiva Kumar inside and out! Every single thought, smile, and heartbeat of his revolves around you, Sireesha. You truly own his whole heart! 💕"
+        badge: "Loved Ones' Certified Queen & Soulmate",
+        message: "You know your loved ones inside and out! Every single thought, smile, and heartbeat revolves around you, Sireesha. You truly own their whole hearts! 💕"
       };
     } else if (score >= 4) {
       return {
         title: "💖 90% True Love Expert!",
-        badge: "Shiva Kumar's Most Cherished Treasure",
-        message: "You know Shiva Kumar so deeply! Shiva Kumar feels like the luckiest man alive having you by his side every single day. Happy Birthday, beautiful! 🥰"
+        badge: "Loved Ones' Most Cherished Treasure",
+        message: "You know your loved ones so deeply! Everyone feels so blessed having you by their side every single day. Happy Birthday, beautiful! 🥰"
       };
     } else {
       return {
         title: "✨ Forever Sweetheart!",
-        badge: "Shiva Kumar's Eternal Love",
-        message: "No matter what, Shiva Kumar's love for you is infinite, unconditional, and grows stronger with every passing moment! 💖"
+        badge: "Loved Ones' Eternal Love",
+        message: "No matter what, your loved ones' affection for you is infinite, unconditional, and grows stronger with every passing moment! 💖"
       };
     }
   };
@@ -116,7 +116,7 @@ const LoveQuiz = ({ onComplete }) => {
         <div className="flex items-center space-x-2 text-left">
           <Heart className="w-6 h-6 text-pink-400 fill-pink-500 animate-pulse" />
           <h2 className="font-dancing text-2xl sm:text-3xl font-bold text-white glow-text-rose">
-            How Well Do You Know Shiva Kumar? 💖
+            How Well Do You Know Your Loved Ones? 💖
           </h2>
         </div>
         {!isQuizFinished && (
@@ -227,7 +227,7 @@ const LoveQuiz = ({ onComplete }) => {
               className="text-xs sm:text-sm text-pink-300 hover:text-pink-100 underline mb-2 transition-colors flex items-center justify-center space-x-1 mx-auto"
             >
               <Award className="w-4 h-4 text-amber-300" />
-              <span>{showBreakdown ? 'Hide Shiva Kumar Fact Summary' : 'Show Shiva Kumar Fact Summary'}</span>
+              <span>{showBreakdown ? 'Hide Loved Ones Fact Summary' : 'Show Loved Ones Fact Summary'}</span>
             </button>
 
             {showBreakdown && (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import confetti from 'canvas-confetti';
-import { Heart, Lock, Unlock, Key, ArrowRight } from 'lucide-react';
+import { Heart, Lock, Unlock, Key, ArrowRight, Sparkles } from 'lucide-react';
 import { CONFIG } from '../data/config';
 import { playPop, playWin, startBGM } from '../utils/sound';
 
@@ -22,15 +22,15 @@ const BirthdayDoorIntro = ({ onDoorOpened }) => {
     playWin();
     setIsLocking(true);
 
-    // Create 25 floating helium balloons
-    const balloonColors = ['🎈', '💗', '💖', '💜', '🎈', '✨', '👑', '🌸'];
-    const generated = Array.from({ length: 25 }).map((_, i) => ({
+    // Create 30 floating helium balloons
+    const balloonColors = ['🎈', '💗', '💖', '💜', '🎈', '✨', '👑', '🎉', '🎈'];
+    const generated = Array.from({ length: 30 }).map((_, i) => ({
       id: i,
       symbol: balloonColors[Math.floor(Math.random() * balloonColors.length)],
-      left: `${5 + Math.random() * 90}%`,
-      delay: `${Math.random() * 1.2}s`,
-      speed: `${3 + Math.random() * 2.5}s`,
-      scale: 0.8 + Math.random() * 0.7
+      left: `${3 + Math.random() * 94}%`,
+      delay: `${Math.random() * 0.9}s`,
+      speed: `${2.6 + Math.random() * 2.2}s`,
+      scale: 0.85 + Math.random() * 0.85
     }));
 
     setBalloons(generated);
@@ -42,15 +42,15 @@ const BirthdayDoorIntro = ({ onDoorOpened }) => {
       origin: { y: 0.6 }
     });
 
-    // Animate door unlocking after lock animation (0.6s)
+    // Start 3D Door opening swing animation at 400ms
     setTimeout(() => {
       setIsDoorUnlocked(true);
-    }, 600);
+    }, 400);
 
-    // Open steps after door opens (2.2s)
+    // Open steps after doors fully open and reveal the kingdom (2.8s)
     setTimeout(() => {
       onDoorOpened();
-    }, 2200);
+    }, 2800);
   };
 
   return (
@@ -68,7 +68,7 @@ const BirthdayDoorIntro = ({ onDoorOpened }) => {
                 animationDelay: b.delay,
                 transform: `scale(${b.scale})`
               }}
-              className="absolute text-5xl sm:text-6xl drop-shadow-[0_0_15px_rgba(236,72,153,0.8)]"
+              className="absolute text-5xl sm:text-6xl drop-shadow-[0_0_15px_rgba(236,72,153,0.85)]"
             >
               {b.symbol}
             </div>
@@ -115,7 +115,7 @@ const BirthdayDoorIntro = ({ onDoorOpened }) => {
       {phase === 'door' && (
         <div className="max-w-md w-full mx-auto space-y-5 animate-fadeIn flex flex-col items-center justify-center text-center">
           <div className="text-center space-y-2 flex flex-col items-center justify-center">
-            <span className="inline-flex items-center space-x-1.5 px-4 py-1 rounded-full bg-pink-500/20 text-pink-300 text-xs sm:text-sm font-bold border border-pink-500/30">
+            <span className="inline-flex items-center space-x-1.5 px-4 py-1 rounded-full bg-pink-500/20 text-pink-300 text-xs sm:text-sm font-bold border border-pink-500/30 shadow-md">
               <Key className="w-4 h-4 text-amber-300" />
               <span>The Magical Birthday Door</span>
             </span>
@@ -127,63 +127,85 @@ const BirthdayDoorIntro = ({ onDoorOpened }) => {
             </p>
           </div>
 
-          {/* 3D Graphic Door Frame */}
-          <div className="relative w-72 sm:w-80 h-96 mx-auto rounded-t-full bg-gradient-to-b from-purple-900 via-slate-900 to-pink-950 border-4 border-amber-300/70 p-4 shadow-2xl overflow-hidden flex items-center justify-center">
-            
-            {/* Bright Light Rays when door is opened */}
-            {isDoorUnlocked && (
-              <div className="absolute inset-0 bg-gradient-to-t from-amber-300 via-pink-400 to-white animate-pulse z-20 flex items-center justify-center">
-                <span className="font-dancing text-4xl sm:text-5xl font-bold text-slate-950 glow-text-gold animate-bounce">
+          {/* 3D Animated Door Frame */}
+          <div
+            style={{ perspective: '1200px' }}
+            className="relative w-72 sm:w-80 h-[390px] mx-auto rounded-t-full bg-slate-950 border-4 border-amber-300/80 p-2 shadow-[0_0_40px_rgba(245,158,11,0.5)] overflow-hidden flex items-center justify-center"
+          >
+            {/* Interior Room (Magical Kingdom Revealed Behind Swinging Doors) */}
+            <div className="absolute inset-0 bg-gradient-to-b from-amber-300 via-rose-500 to-purple-950 flex flex-col items-center justify-center p-6 text-center z-0">
+              <div className="space-y-3 animate-pulse">
+                <Sparkles className="w-12 h-12 text-amber-200 mx-auto animate-spin" style={{ animationDuration: '6s' }} />
+                <h3 className="font-dancing text-4xl sm:text-5xl font-extrabold text-white glow-text-gold drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
                   Welcome Sireesha! 🎉
-                </span>
-              </div>
-            )}
-
-            {/* Left Door Panel */}
-            <div
-              className={`absolute top-0 bottom-0 left-0 w-1/2 bg-gradient-to-br from-pink-800 via-rose-900 to-purple-950 border-r-2 border-amber-300/60 shadow-2xl transition-transform duration-1000 ${
-                isDoorUnlocked ? '-translate-x-full' : 'translate-x-0'
-              }`}
-            >
-              <div className="w-full h-full p-4 flex flex-col justify-around items-end opacity-40">
-                <div className="w-8 h-8 rounded-full border border-amber-300/40"></div>
-                <div className="w-12 h-12 rounded-full border border-amber-300/40"></div>
+                </h3>
+                <p className="font-fredoka text-amber-100 text-sm sm:text-base font-bold drop-shadow">
+                  Your Magical Kingdom is Open! 💕
+                </p>
               </div>
             </div>
 
-            {/* Right Door Panel */}
+            {/* Left Door Panel - 3D Swinging Door */}
             <div
-              className={`absolute top-0 bottom-0 right-0 w-1/2 bg-gradient-to-bl from-pink-800 via-rose-900 to-purple-950 border-l-2 border-amber-300/60 shadow-2xl transition-transform duration-1000 ${
-                isDoorUnlocked ? 'translate-x-full' : 'translate-x-0'
-              }`}
+              style={{
+                transformOrigin: 'left center',
+                transform: isDoorUnlocked ? 'perspective(1200px) rotateY(-112deg)' : 'perspective(1200px) rotateY(0deg)',
+                transition: 'transform 1.8s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 1.8s ease'
+              }}
+              className="absolute top-0 bottom-0 left-0 w-1/2 bg-gradient-to-br from-pink-900 via-rose-950 to-purple-950 border-r-2 border-amber-400/80 shadow-[inset_0_0_20px_rgba(0,0,0,0.8),5px_0_25px_rgba(0,0,0,0.7)] z-20 flex flex-col justify-around items-end p-4"
             >
-              <div className="w-full h-full p-4 flex flex-col justify-around items-center opacity-40">
-                <div className="w-8 h-8 rounded-full border border-amber-300/40"></div>
-                <div className="w-12 h-12 rounded-full border border-amber-300/40"></div>
+              {/* Ornate Door Carvings & Panels */}
+              <div className="w-full h-full border border-amber-400/30 rounded-tl-full flex flex-col justify-around items-end p-3">
+                <div className="w-8 h-8 rounded-full border-2 border-amber-300/40 bg-pink-950/60 shadow-inner"></div>
+                <div className="w-12 h-12 rounded-full border-2 border-amber-300/40 bg-pink-950/60 shadow-inner"></div>
+                <div className="w-4 h-12 rounded-full bg-gradient-to-b from-amber-300 to-amber-500 border border-white shadow-md"></div>
+              </div>
+            </div>
+
+            {/* Right Door Panel - 3D Swinging Door */}
+            <div
+              style={{
+                transformOrigin: 'right center',
+                transform: isDoorUnlocked ? 'perspective(1200px) rotateY(112deg)' : 'perspective(1200px) rotateY(0deg)',
+                transition: 'transform 1.8s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 1.8s ease'
+              }}
+              className="absolute top-0 bottom-0 right-0 w-1/2 bg-gradient-to-bl from-pink-900 via-rose-950 to-purple-950 border-l-2 border-amber-400/80 shadow-[inset_0_0_20px_rgba(0,0,0,0.8),-5px_0_25px_rgba(0,0,0,0.7)] z-20 flex flex-col justify-around items-start p-4"
+            >
+              {/* Ornate Door Carvings & Panels */}
+              <div className="w-full h-full border border-amber-400/30 rounded-tr-full flex flex-col justify-around items-start p-3">
+                <div className="w-8 h-8 rounded-full border-2 border-amber-300/40 bg-pink-950/60 shadow-inner"></div>
+                <div className="w-12 h-12 rounded-full border-2 border-amber-300/40 bg-pink-950/60 shadow-inner"></div>
+                <div className="w-4 h-12 rounded-full bg-gradient-to-b from-amber-300 to-amber-500 border border-white shadow-md"></div>
               </div>
             </div>
 
             {/* Centered Golden Heart Lock Button */}
-            {!isDoorUnlocked && (
-              <div className="z-30 flex flex-col items-center justify-center">
-                <button
-                  onClick={handleUnlockDoor}
-                  className={`p-5 rounded-full bg-gradient-to-tr from-amber-300 via-amber-400 to-yellow-500 text-slate-950 border-4 border-white shadow-[0_0_30px_rgba(245,158,11,0.9)] hover:scale-110 active:scale-95 transition-all duration-300 ${
-                    isLocking ? 'animate-spin' : 'animate-bounce'
-                  }`}
-                  title="Click to unlock the door!"
-                >
-                  {isLocking ? (
-                    <Unlock className="w-10 h-10 text-slate-950 fill-amber-200" />
-                  ) : (
-                    <Lock className="w-10 h-10 text-slate-950 fill-amber-200" />
-                  )}
-                </button>
-                <span className="mt-3 px-4 py-1.5 rounded-full bg-slate-950/80 text-amber-300 text-xs sm:text-sm font-bold border border-amber-300/40 shadow-lg animate-pulse">
-                  👈 Tap Lock To Open Door!
-                </span>
-              </div>
-            )}
+            <div
+              style={{
+                opacity: isDoorUnlocked ? 0 : 1,
+                transform: isDoorUnlocked ? 'scale(1.3)' : 'scale(1)',
+                transition: 'opacity 0.6s ease, transform 0.6s ease',
+                pointerEvents: isDoorUnlocked ? 'none' : 'auto'
+              }}
+              className="z-30 flex flex-col items-center justify-center absolute"
+            >
+              <button
+                onClick={handleUnlockDoor}
+                className={`p-5 rounded-full bg-gradient-to-tr from-amber-300 via-amber-400 to-yellow-500 text-slate-950 border-4 border-white shadow-[0_0_35px_rgba(245,158,11,0.95),0_6px_20px_rgba(0,0,0,0.8)] hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer ${
+                  isLocking ? 'animate-spin' : 'animate-bounce'
+                }`}
+                title="Click to unlock the doors!"
+              >
+                {isLocking ? (
+                  <Unlock className="w-10 h-10 text-slate-950 fill-amber-200" />
+                ) : (
+                  <Lock className="w-10 h-10 text-slate-950 fill-amber-200" />
+                )}
+              </button>
+              <span className="mt-3 px-4 py-1.5 rounded-full bg-slate-950/90 text-amber-300 text-xs sm:text-sm font-bold border border-amber-300/50 shadow-xl animate-pulse">
+                👈 Tap Lock To Open Doors!
+              </span>
+            </div>
           </div>
         </div>
       )}
@@ -192,7 +214,7 @@ const BirthdayDoorIntro = ({ onDoorOpened }) => {
         @keyframes floatUpBalloon {
           0% {
             bottom: -60px;
-            opacity: 0.9;
+            opacity: 0.95;
             transform: translateY(0) rotate(0deg);
           }
           50% {

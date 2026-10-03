@@ -2,10 +2,10 @@
 export const CONFIG = {
   herName: "Sireesha",
   herNickname: "Siri",
-  hisName: "Shiva Kumar",
-  hisNickname: "Shiva Kumar",
+  hisName: "Loved Ones",
+  hisNickname: "Loved Ones",
   herTitle: "My Dearest Sireesha 💖",
-  subheading: "A magical world created with all my love, just for you! ✨",
+  subheading: "A magical world created with all our love, just for you! ✨",
   
   // Passcode for secret entry (optional / fun unlock)
   secretPasscode: "143", // or any date/code, default unlocks easily
@@ -13,11 +13,11 @@ export const CONFIG = {
   // Audio BGM preset title
   bgmTitle: "Sweet Romantic Lullaby",
 
-  // Quiz Questions customized about Shiva Kumar for Sireesha
+  // Quiz Questions customized about Loved Ones for Sireesha
   quizQuestions: [
     {
       id: 1,
-      question: "What is Shiva Kumar's absolute favorite view in the entire world?",
+      question: "What is your loved ones' absolute favorite view in the entire world?",
       options: [
         "A sunset by the beach 🌅",
         "Snowy mountain peaks 🏔️",
@@ -25,23 +25,23 @@ export const CONFIG = {
         "A high-tech gaming room 🎮"
       ],
       correctIndex: 2,
-      celebration: "Bingo! Nothing in this world comes close to Sireesha's gorgeous smile for Shiva Kumar! 💖"
+      celebration: "Bingo! Nothing in this world comes close to Sireesha's gorgeous smile for your loved ones! 💖"
     },
     {
       id: 2,
-      question: "What happens to Shiva Kumar whenever he hears Sireesha's voice?",
+      question: "What happens to your loved ones whenever they hear Sireesha's voice?",
       options: [
-        "All his stress disappears instantly ✨",
-        "His heart starts beating in fast-forward 💓",
-        "He gets the biggest uncontrollable smile 😊",
+        "All stress disappears instantly ✨",
+        "Hearts beat in fast-forward 💓",
+        "Everyone gets the biggest uncontrollable smile 😊",
         "All of the above! 💖"
       ],
       correctIndex: 3,
-      celebration: "100% true! Your voice is Shiva Kumar's greatest comfort and sweetest melody! 🎶"
+      celebration: "100% true! Your voice is your loved ones' greatest comfort and sweetest melody! 🎶"
     },
     {
       id: 3,
-      question: "What is Shiva Kumar's secret to true happiness?",
+      question: "What is your loved ones' secret to true happiness?",
       options: [
         "Morning coffee ☕",
         "Making Sireesha laugh and keeping her happy 🥰",
@@ -49,23 +49,23 @@ export const CONFIG = {
         "Sleeping an extra hour 😴"
       ],
       correctIndex: 1,
-      celebration: "Yes! Seeing you happy is the single greatest joy in Shiva Kumar's life! 💑"
+      celebration: "Yes! Seeing you happy is the single greatest joy in your loved ones' life! 💑"
     },
     {
       id: 4,
-      question: "Who is Shiva Kumar's #1 favorite person, best friend, and forever love?",
+      question: "Who is your loved ones' #1 favorite person, best friend, and forever star?",
       options: [
         "Sireesha 💕",
-        "His Siri 👑",
+        "Our Siri 👑",
         "The Birthday Girl Sireesha 🎂",
         "Sireesha, now and for all eternity! ♾️"
       ],
       correctIndex: 3,
-      celebration: "Without a doubt! Shiva Kumar loves you endlessly, now and forever! 💍"
+      celebration: "Without a doubt! Your loved ones cherish you endlessly, now and forever! 💍"
     },
     {
       id: 5,
-      question: "If Shiva Kumar could grant you any birthday wish, what would it be?",
+      question: "If your loved ones could grant you any birthday wish, what would it be?",
       options: [
         "A lifetime filled with smiles, pampering, and endless love 💖",
         "Whatever your precious heart desires ✨",
@@ -73,7 +73,7 @@ export const CONFIG = {
         "All of these and so much more! 🎁"
       ],
       correctIndex: 3,
-      celebration: "Spot on! Shiva Kumar's biggest dream is to make every single day magical for you! 🌟"
+      celebration: "Spot on! Your loved ones' biggest dream is to make every single day magical for you! 🌟"
     }
   ],
 
@@ -149,8 +149,8 @@ export const CONFIG = {
       "Thank you for being my anchor, my happiness, and my favorite person to laugh with, play with, and share life with.",
       "No matter what games we play or puzzles we solve, the biggest win in my life will always be having YOU by my side."
     ],
-    closing: "Forever & Always Yours,",
-    signature: "Shiva Kumar 💖"
+    closing: "Forever & Always With You,",
+    signature: "Your Loved Ones 💖"
   },
 
   // Cake surprise text

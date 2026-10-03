@@ -24,7 +24,7 @@ const HeroSection = ({ onUnlock, isUnlocked }) => {
   const buttonLabels = [
     "YES, I'm Sireesha! 🥰 (The Birthday Queen 👑)",
     "Catch Me, I'm Sireesha! 🏃‍♀️💨 (Too Fast!)",
-    "Over Here, I'm Sireesha! 💕✨ (Shiva Kumar's Favorite)",
+    "Over Here, I'm Sireesha! 💕✨ (Loved Ones' Favorite)",
     "Still Looking For I'm Sireesha? 😜 (Almost Got Me!)",
     "Final Catch, I'm Sireesha! 🎂💖 (Unlock Surprises!)"
   ];
@@ -215,7 +215,7 @@ const HeroSection = ({ onUnlock, isUnlocked }) => {
             </button>
             <span className="flex items-center space-x-1.5">
               <Smile className="w-4 h-4 text-amber-300" />
-              <span>Made with love by Shiva Kumar 💖</span>
+              <span>Made with love by your loved ones 💖</span>
             </span>
           </div>
 
