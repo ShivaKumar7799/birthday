@@ -99,18 +99,20 @@ const MemoryMatchGame = ({ onComplete }) => {
             <div
               key={card.id}
               onClick={() => handleCardClick(idx)}
-              className={`h-22 sm:h-26 rounded-2xl flex items-center justify-center cursor-pointer transition-all duration-300 transform perspective-1000 ${
+              className={`aspect-square w-full p-2.5 sm:p-3 rounded-2xl flex items-center justify-center cursor-pointer transition-all duration-300 select-none ${
                 isFlipped 
                   ? isCardMatched 
-                    ? 'bg-gradient-to-tr from-pink-500 to-rose-400 border-2 border-amber-300 shadow-lg scale-95' 
-                    : 'bg-gradient-to-tr from-purple-600 to-pink-500 border border-white/40 rotate-y-180' 
-                  : 'bg-slate-800/80 hover:bg-slate-700/90 border border-pink-500/20 hover:scale-105'
+                    ? 'bg-gradient-to-tr from-pink-500 to-rose-400 border-2 border-amber-300 shadow-lg shadow-pink-500/25 ring-2 ring-amber-300/40' 
+                    : 'bg-gradient-to-tr from-purple-600 to-pink-500 border-2 border-white/60 shadow-md' 
+                  : 'bg-slate-800/80 hover:bg-slate-700/90 border-2 border-pink-500/30 hover:border-pink-400/60 hover:scale-[1.03]'
               }`}
             >
               {isFlipped ? (
-                <span className="text-4xl sm:text-5xl animate-bounce">{card.emoji}</span>
+                <span className="text-3xl sm:text-4xl leading-none flex items-center justify-center drop-shadow select-none">
+                  {card.emoji}
+                </span>
               ) : (
-                <Heart className="w-7 h-7 text-pink-400/50" />
+                <Heart className="w-7 h-7 sm:w-8 sm:h-8 text-pink-400/60" />
               )}
             </div>
           );
