@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BackgroundEffects from './components/BackgroundEffects';
 import Navbar from './components/Navbar';
 import BirthdayDoorIntro from './components/BirthdayDoorIntro';
@@ -15,11 +15,38 @@ import RunawayButtonGame from './components/RunawayButtonGame';
 import LanternWish from './components/LanternWish';
 import Footer from './components/Footer';
 import { Heart } from 'lucide-react';
-import { playPop, playWin } from './utils/sound';
+import { playPop, playWin, startBGM } from './utils/sound';
 
 function App() {
   // Flag to track whether the door has been unlocked
   const [isDoorOpened, setIsDoorOpened] = useState(false);
+
+  // Directly play the birthday song on page load / first touch anywhere
+  useEffect(() => {
+    // Attempt direct play immediately
+    startBGM();
+
+    // In case browser requires a user gesture first, trigger immediately on first touch/tap/click anywhere
+    const playDirectly = () => {
+      startBGM();
+      window.removeEventListener('click', playDirectly);
+      window.removeEventListener('touchstart', playDirectly);
+      window.removeEventListener('pointerdown', playDirectly);
+      window.removeEventListener('keydown', playDirectly);
+    };
+
+    window.addEventListener('click', playDirectly, { passive: true });
+    window.addEventListener('touchstart', playDirectly, { passive: true });
+    window.addEventListener('pointerdown', playDirectly, { passive: true });
+    window.addEventListener('keydown', playDirectly, { passive: true });
+
+    return () => {
+      window.removeEventListener('click', playDirectly);
+      window.removeEventListener('touchstart', playDirectly);
+      window.removeEventListener('pointerdown', playDirectly);
+      window.removeEventListener('keydown', playDirectly);
+    };
+  }, []);
 
   // Current active step index (1 to 7) - Only ONE step rendered at a time!
   const [currentStep, setCurrentStep] = useState(1);

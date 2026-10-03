@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Volume2, VolumeX, Music, Heart } from 'lucide-react';
-import { toggleBGM, toggleMute, playPop } from '../utils/sound';
+import { toggleBGM, toggleMute, playPop, getIsBgmPlaying, subscribeBGM } from '../utils/sound';
 
 const Navbar = ({ activeSection, setActiveSection }) => {
-  const [isPlayingMusic, setIsPlayingMusic] = useState(false);
+  const [isPlayingMusic, setIsPlayingMusic] = useState(getIsBgmPlaying());
   const [isMutedState, setIsMutedState] = useState(false);
+
+  useEffect(() => {
+    const unsubscribe = subscribeBGM((playing) => {
+      setIsPlayingMusic(playing);
+    });
+    return unsubscribe;
+  }, []);
 
   const handleMusicToggle = () => {
     playPop();
@@ -41,10 +48,10 @@ const Navbar = ({ activeSection, setActiveSection }) => {
                 ? 'bg-pink-600 text-white shadow-lg shadow-pink-500/40 animate-pulse' 
                 : 'bg-white/10 text-pink-200 hover:bg-white/20'
             }`}
-            title="Toggle Romantic BGM"
+            title="Toggle Birthday Song"
           >
             <Music className="w-4 h-4" />
-            <span className="hidden sm:inline">{isPlayingMusic ? 'Music ON 🎵' : 'Music OFF'}</span>
+            <span className="hidden sm:inline">{isPlayingMusic ? 'Birthday Song 🎂🎵' : 'Play Song 🎶'}</span>
           </button>
 
           {/* Sound FX Mute Button */}
