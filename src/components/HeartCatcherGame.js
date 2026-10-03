@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import confetti from 'canvas-confetti';
-import { Gamepad2, Play, Trophy, Sparkles } from 'lucide-react';
+import { Play, Trophy, Sparkles } from 'lucide-react';
 import { playHeartCatch, playPop, playWin } from '../utils/sound';
 
 const ICONS = ['💖', '👑', '🎂', '🌹', '✨', '🎁', '🧸'];
@@ -64,36 +64,31 @@ const HeartCatcherGame = () => {
   };
 
   return (
-    <section className="glass-card p-6 sm:p-10 rounded-3xl border border-pink-500/30 max-w-xl mx-auto my-12 text-center">
-      <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-xs font-semibold mb-3 border border-purple-500/30">
-        <Gamepad2 className="w-3.5 h-3.5 text-pink-300" />
-        <span>Mini-Game: Catch The Hearts 🎮</span>
-      </div>
-
-      <h2 className="font-fredoka text-2xl sm:text-3xl font-bold text-white mb-2">
-        Catch Sireesha's Love Tokens!
+    <section className="glass-card p-6 sm:p-8 rounded-3xl border border-pink-500/30 max-w-xl mx-auto my-2 text-center flex flex-col items-center justify-center">
+      <h2 className="font-fredoka text-3xl sm:text-4xl font-bold text-white mb-2 text-center">
+        Catch Sireesha's Love Tokens! 🎮
       </h2>
-      <p className="text-xs sm:text-sm text-pink-100/80 mb-4">
-        Tap as many falling hearts and gifts as you can before time runs out! ✨
+      <p className="text-sm sm:text-base text-pink-100/90 mb-4 text-center">
+        Tap as many falling hearts as you can before time runs out! ✨
       </p>
 
-      <div className="flex items-center justify-between text-xs font-bold text-pink-200 bg-slate-900/60 p-3 rounded-xl mb-4 border border-pink-500/20">
-        <span>Score: <strong className="text-pink-400 text-base">{score}</strong></span>
-        <span>Time Left: <strong className="text-amber-300 text-base">{timeLeft}s</strong></span>
-        <span>High Score: <strong className="text-purple-300 text-base">{highScore}</strong></span>
+      <div className="flex items-center justify-center space-x-6 text-sm sm:text-base font-bold text-pink-200 bg-slate-900/60 p-3.5 rounded-xl mb-4 border border-pink-500/20 w-full text-center">
+        <span>Score: <strong className="text-pink-400 text-lg">{score}</strong></span>
+        <span>Time Left: <strong className="text-amber-300 text-lg">{timeLeft}s</strong></span>
+        <span>High Score: <strong className="text-purple-300 text-lg">{highScore}</strong></span>
       </div>
 
       {/* Game Field */}
-      <div className="relative w-full h-72 rounded-2xl bg-slate-900/80 border-2 border-pink-500/30 overflow-hidden shadow-inner flex items-center justify-center">
+      <div className="relative w-full h-76 rounded-2xl bg-slate-900/80 border-2 border-pink-500/30 overflow-hidden shadow-inner flex flex-col items-center justify-center">
         {!isPlaying && !isGameOver && (
-          <div className="text-center p-4 z-10">
-            <Trophy className="w-12 h-12 text-amber-300 mx-auto mb-2 animate-bounce" />
-            <p className="text-xs text-pink-200 mb-4 font-medium">Ready to test your speed, Sireesha?</p>
+          <div className="text-center p-4 z-10 flex flex-col items-center justify-center">
+            <Trophy className="w-14 h-14 text-amber-300 mx-auto mb-2 animate-bounce" />
+            <p className="text-sm sm:text-base text-pink-200 mb-4 font-medium text-center">Ready to test your speed, Sireesha?</p>
             <button
               onClick={startGame}
-              className="px-6 py-2.5 rounded-full bg-pink-600 hover:bg-pink-500 text-white font-fredoka font-semibold text-xs shadow-lg flex items-center space-x-2 mx-auto"
+              className="px-8 py-3.5 rounded-full bg-pink-600 hover:bg-pink-500 text-white font-fredoka font-semibold text-base shadow-lg flex items-center justify-center space-x-2 mx-auto"
             >
-              <Play className="w-4 h-4 fill-current" />
+              <Play className="w-5 h-5 fill-current" />
               <span>Start Catching! 🚀</span>
             </button>
           </div>
@@ -110,7 +105,7 @@ const HeartCatcherGame = () => {
                   left: item.left,
                   animation: `fallDown ${item.speed}s linear forwards`
                 }}
-                className="absolute text-3xl sm:text-4xl p-2 cursor-pointer hover:scale-125 transition-transform"
+                className="absolute text-4xl sm:text-5xl p-2 cursor-pointer hover:scale-125 transition-transform"
               >
                 {item.symbol}
               </button>
@@ -120,17 +115,17 @@ const HeartCatcherGame = () => {
 
         {/* Game Over Banner */}
         {isGameOver && (
-          <div className="text-center p-4 z-10 animate-fadeIn">
-            <Sparkles className="w-12 h-12 text-pink-300 mx-auto mb-2 animate-spin" style={{ animationDuration: '3s' }} />
-            <h3 className="font-dancing text-3xl font-bold text-white glow-text mb-1">
+          <div className="text-center p-4 z-10 animate-fadeIn flex flex-col items-center justify-center">
+            <Sparkles className="w-14 h-14 text-pink-300 mx-auto mb-2 animate-spin" style={{ animationDuration: '3s' }} />
+            <h3 className="font-dancing text-4xl sm:text-5xl font-bold text-white glow-text mb-1 text-center">
               Time's Up, Sireesha! 🎉
             </h3>
-            <p className="text-xs text-pink-100 mb-4">
-              You caught <strong className="text-amber-300 text-base">{score} hearts</strong>! You are legendary! 👑
+            <p className="text-sm sm:text-base text-pink-100 mb-4 text-center">
+              You caught <strong className="text-amber-300 text-lg sm:text-xl">{score} hearts</strong>! You are legendary! 👑
             </p>
             <button
               onClick={startGame}
-              className="px-6 py-2 rounded-full bg-pink-600 hover:bg-pink-500 text-white text-xs font-semibold shadow-lg"
+              className="px-7 py-3 rounded-full bg-pink-600 hover:bg-pink-500 text-white text-sm sm:text-base font-semibold shadow-lg mx-auto"
             >
               Play Again 🔄
             </button>

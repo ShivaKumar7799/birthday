@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import confetti from 'canvas-confetti';
-import { Heart, Shuffle } from 'lucide-react';
+import { Shuffle } from 'lucide-react';
 import { CONFIG } from '../data/config';
 import { playPop, playWin } from '../utils/sound';
 
@@ -21,34 +21,29 @@ const ReasonGenerator = () => {
   };
 
   return (
-    <section className="glass-card p-6 sm:p-10 rounded-3xl border border-pink-500/30 max-w-xl mx-auto my-12 text-center">
-      <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-pink-500/20 text-pink-300 text-xs font-semibold mb-3 border border-pink-500/30">
-        <Heart className="w-3.5 h-3.5 text-pink-400 fill-pink-400" />
-        <span>Jar of Love Reasons 💖</span>
-      </div>
-
-      <h2 className="font-dancing text-4xl sm:text-5xl font-bold text-white mb-2 glow-text">
-        Why I Love Sireesha
+    <section className="glass-card p-6 sm:p-8 rounded-3xl border border-pink-500/30 max-w-xl mx-auto my-2 text-center flex flex-col items-center justify-center">
+      <h2 className="font-dancing text-5xl sm:text-6xl font-bold text-white mb-2 glow-text text-center">
+        Why I Love Sireesha 💖
       </h2>
-      <p className="text-xs sm:text-sm text-pink-100/90 mb-6 font-medium">
+      <p className="text-sm sm:text-base text-pink-100/90 mb-5 font-medium text-center">
         Tap the heart jar below to draw a sweet reason! ✨
       </p>
 
       {/* Jar & Reason display */}
-      <div className="bg-slate-900/60 p-6 rounded-2xl border border-pink-500/30 shadow-inner mb-6 relative overflow-hidden min-h-[140px] flex flex-col justify-center items-center">
-        <div className="absolute top-2 right-2 text-[10px] text-pink-300/60 font-mono">
+      <div className="bg-slate-900/60 p-6 sm:p-8 rounded-2xl border border-pink-500/30 shadow-inner mb-6 relative overflow-hidden min-h-[150px] flex flex-col justify-center items-center text-center w-full">
+        <div className="absolute top-2.5 right-3 text-xs text-pink-300/80 font-mono">
           Reason #{count}
         </div>
-        <p className="font-fredoka text-lg sm:text-xl text-pink-200 font-semibold leading-relaxed animate-fadeIn">
+        <p className="font-fredoka text-xl sm:text-2xl text-pink-200 font-semibold leading-relaxed animate-fadeIn text-center">
           "{currentReason}"
         </p>
       </div>
 
       <button
         onClick={drawNewReason}
-        className="px-6 py-3 rounded-full bg-gradient-to-r from-pink-500 via-rose-500 to-purple-600 text-white font-fredoka font-semibold shadow-lg glow-btn flex items-center space-x-2 mx-auto text-sm"
+        className="px-8 py-3.5 rounded-full bg-gradient-to-r from-pink-500 via-rose-500 to-purple-600 text-white font-fredoka font-semibold shadow-lg glow-btn flex items-center justify-center space-x-2 mx-auto text-base sm:text-lg"
       >
-        <Shuffle className="w-4 h-4" />
+        <Shuffle className="w-5 h-5" />
         <span>Draw Another Love Note 💌</span>
       </button>
     </section>

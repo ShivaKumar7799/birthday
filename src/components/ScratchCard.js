@@ -99,23 +99,20 @@ const ScratchCard = () => {
   };
 
   return (
-    <div className="glass-card p-6 rounded-3xl border border-pink-500/30 max-w-xl mx-auto my-8 text-center">
-      <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30">
-        Puzzle 3 🔮
-      </span>
-      <h2 className="font-fredoka text-xl sm:text-2xl font-bold text-white mt-1 mb-2">
-        Magic Scratch Card
+    <div className="glass-card p-6 sm:p-8 rounded-3xl border border-pink-500/30 max-w-xl mx-auto my-2 text-center flex flex-col items-center justify-center">
+      <h2 className="font-fredoka text-2xl sm:text-3xl font-bold text-white mb-2 text-center">
+        Magic Scratch Card 🔮
       </h2>
-      <p className="text-xs sm:text-sm text-pink-100/80 mb-4">
-        Scratch off the sparkling gold overlay to unlock your secret love message! ✨
+      <p className="text-sm sm:text-base text-pink-100/90 mb-4 text-center">
+        Scratch off the sparkling overlay to unlock your secret love message! ✨
       </p>
 
       {/* Container holding hidden message under canvas */}
-      <div className="relative w-full max-w-md h-52 mx-auto rounded-2xl overflow-hidden border-2 border-pink-400/40 shadow-xl bg-slate-900 flex items-center justify-center p-6 text-center">
+      <div className="relative w-full max-w-md h-56 mx-auto rounded-2xl overflow-hidden border-2 border-pink-400/40 shadow-xl bg-slate-900 flex flex-col items-center justify-center p-6 text-center">
         {/* Hidden Message Content */}
-        <div className="z-0 space-y-2">
-          <Sparkles className="w-8 h-8 text-amber-300 mx-auto animate-spin" style={{ animationDuration: '4s' }} />
-          <p className="font-dancing text-2xl sm:text-3xl text-pink-300 font-bold glow-text leading-relaxed">
+        <div className="z-0 space-y-2 flex flex-col items-center justify-center text-center">
+          <Sparkles className="w-9 h-9 text-amber-300 mx-auto animate-spin" style={{ animationDuration: '4s' }} />
+          <p className="font-dancing text-3xl sm:text-4xl text-pink-300 font-bold glow-text leading-relaxed text-center">
             {CONFIG.scratchCardSecret}
           </p>
         </div>
@@ -124,7 +121,7 @@ const ScratchCard = () => {
         <canvas
           ref={canvasRef}
           width={400}
-          height={210}
+          height={220}
           onMouseDown={handlePointerDown}
           onMouseUp={handlePointerUp}
           onMouseMove={handlePointerMove}
@@ -137,13 +134,13 @@ const ScratchCard = () => {
         />
       </div>
 
-      <div className="mt-4 flex items-center justify-center space-x-3">
+      <div className="mt-4 flex items-center justify-center space-x-3 w-full">
         {!isRevealed && (
           <button
             onClick={revealAll}
-            className="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-pink-200 text-xs font-semibold border border-pink-400/30 flex items-center space-x-1.5"
+            className="px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 text-pink-200 text-sm sm:text-base font-semibold border border-pink-400/30 flex items-center justify-center space-x-2 mx-auto"
           >
-            <Eye className="w-3.5 h-3.5" />
+            <Eye className="w-4 h-4" />
             <span>Instant Reveal 🪄</span>
           </button>
         )}

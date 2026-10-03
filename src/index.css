@@ -15,12 +15,34 @@ html {
 
 body {
   margin: 0;
+  padding: 0;
   font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background: radial-gradient(circle at 50% 20%, #2e0854 0%, #150030 45%, #090017 100%);
   background-attachment: fixed;
   color: #fff;
   overflow-x: hidden;
   min-height: 100vh;
+  width: 100%;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.w-full {
+  width: 100% !important;
 }
 
 /* Custom Calligraphy & Romantic Fonts */
@@ -52,6 +74,8 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.25);
   box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.45), inset 0 0 15px rgba(255, 255, 255, 0.1);
   border-radius: 28px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .glass-card-gold {
@@ -60,6 +84,8 @@ body {
   border: 1px solid rgba(254, 240, 138, 0.35);
   box-shadow: 0 10px 30px rgba(245, 158, 11, 0.25);
   border-radius: 28px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .glass-pill-luxury {
