@@ -4,7 +4,7 @@ import { Sparkles, Eye } from 'lucide-react';
 import { CONFIG } from '../data/config';
 import { playPop, playWin } from '../utils/sound';
 
-const ScratchCard = () => {
+const ScratchCard = ({ onComplete }) => {
   const canvasRef = useRef(null);
   const [isRevealed, setIsRevealed] = useState(false);
   const [isDrawing, setIsDrawing] = useState(false);
@@ -63,7 +63,10 @@ const ScratchCard = () => {
     if (percentage > 45 && !isRevealed) {
       setIsRevealed(true);
       playWin();
-      confetti({ particleCount: 90, spread: 70 });
+      confetti({ particleCount: 100, spread: 80 });
+      setTimeout(() => {
+        if (onComplete) onComplete();
+      }, 2500);
     }
   };
 
@@ -95,7 +98,10 @@ const ScratchCard = () => {
     }
     setIsRevealed(true);
     playWin();
-    confetti({ particleCount: 90, spread: 70 });
+    confetti({ particleCount: 100, spread: 80 });
+    setTimeout(() => {
+      if (onComplete) onComplete();
+    }, 2500);
   };
 
   return (
@@ -134,8 +140,8 @@ const ScratchCard = () => {
         />
       </div>
 
-      <div className="mt-4 flex items-center justify-center space-x-3 w-full">
-        {!isRevealed && (
+      <div className="mt-4 flex flex-col items-center justify-center space-y-2 w-full">
+        {!isRevealed ? (
           <button
             onClick={revealAll}
             className="px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 text-pink-200 text-sm sm:text-base font-semibold border border-pink-400/30 flex items-center justify-center space-x-2 mx-auto"
@@ -143,6 +149,10 @@ const ScratchCard = () => {
             <Eye className="w-4 h-4" />
             <span>Instant Reveal 🪄</span>
           </button>
+        ) : (
+          <p className="text-xs sm:text-sm text-amber-200 font-bold animate-pulse">
+            ✨ Message Unlocked! Moving to Step 5: Birthday Cake in 2s... 🎂
+          </p>
         )}
       </div>
     </div>

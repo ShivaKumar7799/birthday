@@ -4,7 +4,7 @@ import { Flame, Wind, Scissors } from 'lucide-react';
 import { CONFIG } from '../data/config';
 import { playBlow, playWin, playPop } from '../utils/sound';
 
-const InteractiveCake = () => {
+const InteractiveCake = ({ onComplete }) => {
   const [candlesLit, setCandlesLit] = useState([true, true, true]);
   const [isSliced, setIsSliced] = useState(false);
   const [wishMade, setWishMade] = useState(false);
@@ -36,7 +36,10 @@ const InteractiveCake = () => {
     playPop();
     setIsSliced(true);
     playWin();
-    confetti({ particleCount: 80, spread: 60 });
+    confetti({ particleCount: 120, spread: 80 });
+    setTimeout(() => {
+      if (onComplete) onComplete();
+    }, 2200);
   };
 
   const resetCake = () => {
@@ -137,6 +140,11 @@ const InteractiveCake = () => {
               ? "Here is a sweet slice of happiness for the sweetest girl in the world! 🍰💕" 
               : "All candles are blown out! May all your dreams come true today and always! 💖"}
           </p>
+          {isSliced && (
+            <p className="text-xs sm:text-sm text-amber-200 font-bold mt-2 animate-pulse">
+              ✨ Cake sliced! Moving to Step 6: Love Letter in 2s... 💌
+            </p>
+          )}
         </div>
       )}
     </section>

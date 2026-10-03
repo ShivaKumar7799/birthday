@@ -17,7 +17,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: radial-gradient(circle at 50% 20%, #2e0854 0%, #150030 45%, #090017 100%);
+  background: radial-gradient(circle at 50% 20%, #150226 0%, #0c0018 55%, #05000c 100%);
   background-attachment: fixed;
   color: #fff;
   overflow-x: hidden;
@@ -66,26 +66,38 @@ body {
   font-family: 'Sacramento', cursive;
 }
 
+/* Base Clean Glassmorphism Card (Dark & Readable) */
+.glass-card {
+  background: rgba(16, 7, 32, 0.92) !important;
+  backdrop-filter: blur(28px) !important;
+  -webkit-backdrop-filter: blur(28px) !important;
+  border: 1px solid rgba(244, 114, 182, 0.25) !important;
+  box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.65), inset 0 0 15px rgba(255, 255, 255, 0.04) !important;
+  border-radius: 28px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
 /* Ultra Luxury Glassmorphism Cards */
 .glass-card-luxury {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 182, 193, 0.05) 50%, rgba(255, 255, 255, 0.08) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.45), inset 0 0 15px rgba(255, 255, 255, 0.1);
-  border-radius: 28px;
-  margin-left: auto;
-  margin-right: auto;
+  background: rgba(20, 8, 38, 0.94) !important;
+  backdrop-filter: blur(28px) !important;
+  -webkit-backdrop-filter: blur(28px) !important;
+  border: 1.5px solid rgba(244, 114, 182, 0.35) !important;
+  box-shadow: 0 18px 45px 0 rgba(0, 0, 0, 0.7), inset 0 0 15px rgba(255, 255, 255, 0.05) !important;
+  border-radius: 28px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .glass-card-gold {
-  background: linear-gradient(135deg, rgba(254, 240, 138, 0.15) 0%, rgba(245, 158, 11, 0.08) 100%);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(254, 240, 138, 0.35);
-  box-shadow: 0 10px 30px rgba(245, 158, 11, 0.25);
-  border-radius: 28px;
-  margin-left: auto;
-  margin-right: auto;
+  background: rgba(26, 17, 7, 0.92) !important;
+  backdrop-filter: blur(24px) !important;
+  border: 1.5px solid rgba(254, 240, 138, 0.45) !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7) !important;
+  border-radius: 28px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .glass-pill-luxury {

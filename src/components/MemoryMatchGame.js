@@ -51,8 +51,10 @@ const MemoryMatchGame = ({ onComplete }) => {
         if (newMatched.length === cards.length) {
           setIsWon(true);
           playWin();
-          confetti({ particleCount: 100, spread: 70 });
-          if (onComplete) onComplete();
+          confetti({ particleCount: 120, spread: 80 });
+          setTimeout(() => {
+            if (onComplete) onComplete();
+          }, 1800);
         }
       } else {
         // No match
@@ -124,6 +126,9 @@ const MemoryMatchGame = ({ onComplete }) => {
           </h3>
           <p className="text-sm sm:text-base text-pink-100 mt-2 text-center">
             You matched all cards in just <strong className="text-amber-300 text-lg">{moves} moves</strong>! Level 1 Complete! 👑
+          </p>
+          <p className="text-xs sm:text-sm text-amber-200 mt-3 font-semibold animate-pulse">
+            ✨ Moving to Step 3: Shiva Kumar Love Quiz... 💕
           </p>
         </div>
       )}

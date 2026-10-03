@@ -14,7 +14,7 @@ import HeartCatcherGame from './components/HeartCatcherGame';
 import RunawayButtonGame from './components/RunawayButtonGame';
 import LanternWish from './components/LanternWish';
 import Footer from './components/Footer';
-import { CheckCircle2, ArrowRight, Heart, SkipForward, RotateCcw } from 'lucide-react';
+import { Heart } from 'lucide-react';
 import { playPop, playWin } from './utils/sound';
 
 function App() {
@@ -45,34 +45,12 @@ function App() {
     }
   };
 
-  const skipCurrentStep = () => {
-    playPop();
-    const next = currentStep + 1;
-    if (next <= 7) {
-      setCurrentStep(next);
-      if (next > maxUnlockedStep) {
-        setMaxUnlockedStep(next);
-      }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  };
-
   const jumpToStep = (stepId) => {
-    if (stepId <= maxUnlockedStep || stepId === currentStep + 1) {
-      playPop();
-      setCurrentStep(stepId);
-      if (stepId > maxUnlockedStep) {
-        setMaxUnlockedStep(stepId);
-      }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  };
-
-  const restartJourney = () => {
     playPop();
-    setIsDoorOpened(false);
-    setCurrentStep(1);
-    setMaxUnlockedStep(1);
+    setCurrentStep(stepId);
+    if (stepId > maxUnlockedStep) {
+      setMaxUnlockedStep(stepId);
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -113,30 +91,23 @@ function App() {
                 </span>
               </div>
 
-              {/* Timeline Step Buttons */}
-              <div className="flex items-center space-x-2 sm:space-x-3">
+              {/* Timeline Step Buttons - 100% Clickable Navigation */}
+              <div className="flex items-center space-x-1.5 sm:space-x-2.5">
                 {stepsList.map((step) => {
                   const isCurrent = step.id === currentStep;
-                  const isPassed = step.id < currentStep;
-                  const isAccessible = step.id <= maxUnlockedStep;
 
                   return (
                     <button
                       key={step.id}
                       onClick={() => jumpToStep(step.id)}
-                      disabled={!isAccessible}
-                      className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold transition-all ${
+                      className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-sm sm:text-base font-bold transition-all cursor-pointer ${
                         isCurrent
-                          ? 'bg-gradient-to-tr from-amber-400 via-pink-500 to-rose-500 text-slate-950 ring-4 ring-pink-400/50 scale-110 shadow-lg shadow-pink-500/50'
-                          : isPassed
-                          ? 'bg-pink-600 text-white shadow-md shadow-pink-500/30 hover:scale-105'
-                          : isAccessible
-                          ? 'bg-purple-600/60 text-white hover:bg-purple-500'
-                          : 'bg-white/10 text-white/30 cursor-not-allowed border border-white/10'
+                          ? 'bg-gradient-to-tr from-amber-400 via-pink-500 to-rose-500 text-slate-950 ring-4 ring-pink-400/60 scale-110 shadow-lg shadow-pink-500/50'
+                          : 'bg-white/10 hover:bg-pink-600/70 text-white hover:scale-110 border border-white/20 hover:border-pink-400/60 shadow-md'
                       }`}
-                      title={`${step.name} (${isAccessible ? 'Click to jump' : 'Locked'})`}
+                      title={`Go to Step ${step.id}: ${step.name}`}
                     >
-                      {isPassed ? <CheckCircle2 className="w-4.5 h-4.5 text-white" /> : step.icon}
+                      <span className="drop-shadow-sm">{step.icon}</span>
                     </button>
                   );
                 })}
@@ -175,21 +146,21 @@ function App() {
               {/* STEP 4: Golden Scratch Card */}
               {currentStep === 4 && (
                 <div className="w-full flex justify-center">
-                  <ScratchCard />
+                  <ScratchCard onComplete={goToNextStep} />
                 </div>
               )}
 
               {/* STEP 5: Birthday Cake & Candle Blowing */}
               {currentStep === 5 && (
                 <div className="w-full flex justify-center">
-                  <InteractiveCake />
+                  <InteractiveCake onComplete={goToNextStep} />
                 </div>
               )}
 
               {/* STEP 6: Love Letter & Memory Wall */}
               {currentStep === 6 && (
                 <div className="w-full space-y-5 flex flex-col items-center justify-center">
-                  <LoveLetter />
+                  <LoveLetter onComplete={goToNextStep} />
                   <PhotoGallery />
                 </div>
               )}
@@ -208,55 +179,15 @@ function App() {
                     <h2 className="font-dancing text-5xl sm:text-6xl font-bold text-white glow-text-gold mb-3 text-center">
                       Sireesha, You Are My Everything 💖
                     </h2>
-                    <p className="text-sm sm:text-base text-pink-100 leading-relaxed font-medium mb-5 text-center">
-                      You have completed all 7 magical steps of your surprise website! I hope this brought a huge smile to your face today and forever! 🥰
+                    <p className="text-sm sm:text-base text-pink-100 leading-relaxed font-medium mb-3 text-center">
+                      You have completed all 7 magical steps of your birthday surprise website! I hope this brought a huge smile to your face today and forever! 🥰
                     </p>
-                    <button
-                      onClick={restartJourney}
-                      className="px-7 py-3 rounded-full bg-pink-600 hover:bg-pink-500 text-white font-fredoka font-semibold text-sm sm:text-base shadow-lg flex items-center justify-center space-x-2 mx-auto"
-                    >
-                      <RotateCcw className="w-5 h-5" />
-                      <span>Replay Journey From Start 🔄</span>
-                    </button>
+                    <div className="p-3.5 rounded-2xl bg-black/40 border border-amber-300/40 text-amber-200 text-sm sm:text-base font-bold mb-2 text-center">
+                      💖 Forever & Always Created With All My Love by Shiva Kumar 💕
+                    </div>
                   </div>
                 </div>
               )}
-
-              {/* SKIP & NEXT NAVIGATION BAR AT BOTTOM - CENTERED */}
-              <div className="w-full pt-5 border-t border-white/10 flex flex-wrap items-center justify-center gap-4 mt-6">
-                {/* Previous Step Button */}
-                {currentStep > 1 && (
-                  <button
-                    onClick={() => jumpToStep(currentStep - 1)}
-                    className="px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-pink-200 text-xs sm:text-sm font-bold border border-pink-400/30 flex items-center justify-center space-x-2 transition-all"
-                  >
-                    <span>⬅️ Previous Step</span>
-                  </button>
-                )}
-
-                {/* SKIP BUTTON AT BOTTOM */}
-                {currentStep < 7 && (
-                  <div className="flex items-center justify-center space-x-4">
-                    <button
-                      onClick={skipCurrentStep}
-                      className="px-5 py-2.5 rounded-full bg-slate-900/90 hover:bg-slate-800 text-pink-300 text-xs sm:text-sm font-bold border border-pink-500/40 shadow-lg flex items-center justify-center space-x-2 transition-all hover:scale-105"
-                      title="Skip to next surprise"
-                    >
-                      <SkipForward className="w-4.5 h-4.5 text-pink-400" />
-                      <span>Skip Surprise ⏭️</span>
-                    </button>
-
-                    <button
-                      onClick={goToNextStep}
-                      className="px-6 py-2.5 rounded-full glow-btn-rose text-white text-xs sm:text-sm font-bold shadow-lg flex items-center justify-center space-x-2"
-                    >
-                      <span>Next Step</span>
-                      <ArrowRight className="w-4.5 h-4.5" />
-                    </button>
-                  </div>
-                )}
-              </div>
-
             </div>
           </main>
         </>

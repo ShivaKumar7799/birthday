@@ -2,6 +2,8 @@
 export const CONFIG = {
   herName: "Sireesha",
   herNickname: "Siri",
+  hisName: "Shiva Kumar",
+  hisNickname: "Shiva Kumar",
   herTitle: "My Dearest Sireesha 💖",
   subheading: "A magical world created with all my love, just for you! ✨",
   
@@ -11,50 +13,67 @@ export const CONFIG = {
   // Audio BGM preset title
   bgmTitle: "Sweet Romantic Lullaby",
 
-  // Quiz Questions customized for Sireesha
+  // Quiz Questions customized about Shiva Kumar for Sireesha
   quizQuestions: [
     {
       id: 1,
-      question: "Who is the absolute cutest, sweetest person in the entire universe?",
-      options: ["Sireesha ✨", "Sireesha (also) 💕", "Obviously Sireesha 👑", "All of the above! 🥰"],
-      correctIndex: 3,
-      celebration: "Correct!! There was never any doubt! You are the absolute cutest! 😘"
+      question: "What is Shiva Kumar's absolute favorite view in the entire world?",
+      options: [
+        "A sunset by the beach 🌅",
+        "Snowy mountain peaks 🏔️",
+        "Sireesha's cute face & shining smile 🥰",
+        "A high-tech gaming room 🎮"
+      ],
+      correctIndex: 2,
+      celebration: "Bingo! Nothing in this world comes close to Sireesha's gorgeous smile for Shiva Kumar! 💖"
     },
     {
       id: 2,
-      question: "What happens when Sireesha smiles?",
+      question: "What happens to Shiva Kumar whenever he hears Sireesha's voice?",
       options: [
-        "The whole world gets brighter ☀️",
-        "My heart melts instantly 🫠",
-        "Butterflies start dancing 🦋",
+        "All his stress disappears instantly ✨",
+        "His heart starts beating in fast-forward 💓",
+        "He gets the biggest uncontrollable smile 😊",
         "All of the above! 💖"
       ],
       correctIndex: 3,
-      celebration: "Spot on! Your smile literally lights up my whole world! 🌟"
+      celebration: "100% true! Your voice is Shiva Kumar's greatest comfort and sweetest melody! 🎶"
     },
     {
       id: 3,
-      question: "How much do I love Sireesha?",
+      question: "What is Shiva Kumar's secret to true happiness?",
       options: [
-        "To the moon and back 🌙",
-        "More than all the stars in the sky ✨",
-        "More than words can ever describe ♾️",
-        "Infinitely more every single day! 💕"
+        "Morning coffee ☕",
+        "Making Sireesha laugh and keeping her happy 🥰",
+        "Winning a game 🏆",
+        "Sleeping an extra hour 😴"
       ],
-      correctIndex: 3,
-      celebration: "Yes!! Infinitely and beyond measure! 🥰"
+      correctIndex: 1,
+      celebration: "Yes! Seeing you happy is the single greatest joy in Shiva Kumar's life! 💑"
     },
     {
       id: 4,
-      question: "What is Sireesha's magical superpower?",
+      question: "Who is Shiva Kumar's #1 favorite person, best friend, and forever love?",
       options: [
-        "Making me smile no matter what 😊",
-        "Looking stunning 24/7 👑",
-        "Stealing my heart effortlessly 💘",
-        "All 3 superpowers combined! ✨"
+        "Sireesha 💕",
+        "His Siri 👑",
+        "The Birthday Girl Sireesha 🎂",
+        "Sireesha, now and for all eternity! ♾️"
       ],
       correctIndex: 3,
-      celebration: "Bingo! You're a real-life superhero to me! 💖"
+      celebration: "Without a doubt! Shiva Kumar loves you endlessly, now and forever! 💍"
+    },
+    {
+      id: 5,
+      question: "If Shiva Kumar could grant you any birthday wish, what would it be?",
+      options: [
+        "A lifetime filled with smiles, pampering, and endless love 💖",
+        "Whatever your precious heart desires ✨",
+        "To always stand by your side through every journey 🤝",
+        "All of these and so much more! 🎁"
+      ],
+      correctIndex: 3,
+      celebration: "Spot on! Shiva Kumar's biggest dream is to make every single day magical for you! 🌟"
     }
   ],
 
@@ -131,7 +150,7 @@ export const CONFIG = {
       "No matter what games we play or puzzles we solve, the biggest win in my life will always be having YOU by my side."
     ],
     closing: "Forever & Always Yours,",
-    signature: "With all my love 💖"
+    signature: "Shiva Kumar 💖"
   },
 
   // Cake surprise text

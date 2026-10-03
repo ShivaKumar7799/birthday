@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import confetti from 'canvas-confetti';
-import { Heart } from 'lucide-react';
+import { Heart, ArrowRight } from 'lucide-react';
 import { CONFIG } from '../data/config';
 import { playPop, playWin } from '../utils/sound';
 
-const LoveLetter = () => {
+const LoveLetter = ({ onComplete }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleEnvelope = () => {
@@ -72,6 +72,20 @@ const LoveLetter = () => {
               <p className="font-dancing text-3xl font-bold text-amber-300 glow-text text-center">
                 {CONFIG.loveLetter.signature}
               </p>
+
+              {onComplete && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    playPop();
+                    onComplete();
+                  }}
+                  className="mt-5 px-6 py-3 rounded-full glow-btn-rose text-white text-xs sm:text-sm font-bold shadow-xl flex items-center justify-center space-x-2 mx-auto"
+                >
+                  <span>Proceed to Step 7: Grand Finale 🌟</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              )}
             </div>
           </div>
         )}
