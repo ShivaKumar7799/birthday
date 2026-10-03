@@ -1,13 +1,157 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Dancing+Script:wght@600;700&family=Fredoka:wght@400;600;700&family=Great+Vibes&family=Quicksand:wght@500;600;700&family=Sacramento&display=swap');
+
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: radial-gradient(circle at 50% 20%, #2e0854 0%, #150030 45%, #090017 100%);
+  background-attachment: fixed;
+  color: #fff;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Custom Calligraphy & Romantic Fonts */
+.font-dancing {
+  font-family: 'Dancing Script', cursive;
+}
+
+.font-greatvibes {
+  font-family: 'Great Vibes', cursive;
+}
+
+.font-fredoka {
+  font-family: 'Fredoka', sans-serif;
+}
+
+.font-caveat {
+  font-family: 'Caveat', cursive;
+}
+
+.font-sacramento {
+  font-family: 'Sacramento', cursive;
+}
+
+/* Ultra Luxury Glassmorphism Cards */
+.glass-card-luxury {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 182, 193, 0.05) 50%, rgba(255, 255, 255, 0.08) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.45), inset 0 0 15px rgba(255, 255, 255, 0.1);
+  border-radius: 28px;
+}
+
+.glass-card-gold {
+  background: linear-gradient(135deg, rgba(254, 240, 138, 0.15) 0%, rgba(245, 158, 11, 0.08) 100%);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(254, 240, 138, 0.35);
+  box-shadow: 0 10px 30px rgba(245, 158, 11, 0.25);
+  border-radius: 28px;
+}
+
+.glass-pill-luxury {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 4px 20px rgba(236, 72, 153, 0.25);
+}
+
+/* Glowing text effects */
+.glow-text-rose {
+  text-shadow: 0 0 12px rgba(244, 114, 182, 0.9), 0 0 25px rgba(244, 114, 182, 0.6), 0 0 40px rgba(236, 72, 153, 0.4);
+}
+
+.glow-text-gold {
+  text-shadow: 0 0 12px rgba(254, 240, 138, 0.9), 0 0 25px rgba(245, 158, 11, 0.6);
+}
+
+/* Luxury Glowing Buttons */
+.glow-btn-rose {
+  background: linear-gradient(135deg, #ec4899 0%, #f43f5e 50%, #d946ef 100%);
+  box-shadow: 0 0 20px rgba(236, 72, 153, 0.6), 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glow-btn-rose:hover, .glow-btn-rose:active {
+  box-shadow: 0 0 30px rgba(236, 72, 153, 0.9), 0 6px 20px rgba(0, 0, 0, 0.4);
+  transform: translateY(-3px) scale(1.02);
+}
+
+.glow-btn-gold {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%);
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.6);
+  transition: all 0.3s ease;
+}
+
+.glow-btn-gold:hover, .glow-btn-gold:active {
+  box-shadow: 0 0 30px rgba(245, 158, 11, 0.9);
+  transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-16px) rotate(2.5deg); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, #fff 0%, #fbcfe8 25%, #fef08a 50%, #fbcfe8 75%, #fff 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+/* Unlocked section divider line */
+.story-connector-line {
+  width: 3px;
+  height: 60px;
+  margin: 0 auto;
+  background: linear-gradient(to bottom, #ec4899, #f59e0b, #a855f7);
+  box-shadow: 0 0 10px #ec4899;
+  border-radius: 999px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(9, 0, 23, 0.9);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #ec4899, #a855f7);
+  border-radius: 4px;
 }
