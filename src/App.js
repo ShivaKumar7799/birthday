@@ -161,7 +161,7 @@ function App() {
               {currentStep === 6 && (
                 <div className="w-full space-y-5 flex flex-col items-center justify-center">
                   <LoveLetter onComplete={goToNextStep} />
-                  <PhotoGallery />
+                  <PhotoGallery onComplete={goToNextStep} />
                 </div>
               )}
 
@@ -177,13 +177,13 @@ function App() {
                   <div className="glass-card-gold p-8 sm:p-10 rounded-3xl max-w-xl mx-auto text-center border-2 border-amber-300/60 shadow-2xl animate-pulse-glow mt-6 flex flex-col items-center justify-center">
                     <Heart className="w-16 h-16 text-pink-400 fill-pink-400 mx-auto mb-3 animate-bounce" />
                     <h2 className="font-dancing text-5xl sm:text-6xl font-bold text-white glow-text-gold mb-3 text-center">
-                      Sireesha, You Are My Everything 💖
+                      Sireesha, You Are Loved Beyond Measure 💖
                     </h2>
                     <p className="text-sm sm:text-base text-pink-100 leading-relaxed font-medium mb-3 text-center">
-                      You have completed all 7 magical steps of your birthday surprise website! I hope this brought a huge smile to your face today and forever! 🥰
+                      You have completed all 7 magical steps of your birthday surprise website! We hope this brought a huge smile to your face today and forever! 🥰
                     </p>
                     <div className="p-3.5 rounded-2xl bg-black/40 border border-amber-300/40 text-amber-200 text-sm sm:text-base font-bold mb-2 text-center">
-                      💖 Forever & Always Created With All My Love by Shiva Kumar 💕
+                      💖 Forever & Always Created With All Our Love by Your Loved Ones 💕
                     </div>
                   </div>
                 </div>
