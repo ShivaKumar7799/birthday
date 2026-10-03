@@ -78,34 +78,34 @@ const BirthdayDoorIntro = ({ onDoorOpened }) => {
 
       {/* PHASE 1: ANIMATED HAPPY BIRTHDAY GREETING */}
       {phase === 'wish' && (
-        <div className="max-w-xl w-full mx-auto glass-card-luxury p-6 sm:p-10 border-2 border-pink-400/40 shadow-2xl animate-float space-y-5 flex flex-col items-center justify-center text-center">
-          <div className="w-24 h-24 mx-auto rounded-full bg-gradient-to-tr from-pink-500 via-rose-400 to-amber-300 p-1 shadow-2xl shadow-pink-500/50 flex items-center justify-center">
+        <div className="max-w-xl w-full mx-auto glass-card-luxury p-4 sm:p-8 border-2 border-pink-400/40 shadow-2xl animate-float space-y-4 sm:space-y-5 flex flex-col items-center justify-center text-center">
+          <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full bg-gradient-to-tr from-pink-500 via-rose-400 to-amber-300 p-1 shadow-2xl shadow-pink-500/50 flex items-center justify-center">
             <div className="w-full h-full rounded-full bg-slate-950 flex items-center justify-center border border-amber-300/40">
-              <Heart className="w-12 h-12 text-pink-400 fill-pink-500/60 animate-bounce" />
+              <Heart className="w-10 h-10 sm:w-12 sm:h-12 text-pink-400 fill-pink-500/60 animate-bounce" />
             </div>
           </div>
 
-          <span className="inline-block px-4 py-1.5 rounded-full text-sm font-bold bg-pink-500/20 text-pink-200 border border-pink-400/40 shadow-md text-center">
+          <span className="inline-block px-3.5 py-1 sm:px-4 sm:py-1.5 rounded-full text-xs sm:text-sm font-bold bg-pink-500/20 text-pink-200 border border-pink-400/40 shadow-md text-center">
             ✨ Special Celebration For {CONFIG.herName} ✨
           </span>
 
           {/* Animated Calligraphy Greeting */}
-          <h1 className="font-dancing text-6xl sm:text-7xl font-bold text-white glow-text-rose leading-tight animate-pulse-glow text-center">
+          <h1 className="font-dancing text-5xl sm:text-7xl font-bold text-white glow-text-rose leading-tight animate-pulse-glow text-center">
             Happy Birthday <br />
             <span className="shimmer-text">{CONFIG.herName}! 🎂💖</span>
           </h1>
 
-          <p className="text-pink-100/90 text-sm sm:text-base font-medium max-w-md mx-auto leading-relaxed text-center">
+          <p className="text-pink-100/90 text-xs sm:text-base font-medium max-w-md mx-auto leading-relaxed text-center px-1">
             {CONFIG.subheading}
           </p>
 
-          <div className="pt-2 flex justify-center">
+          <div className="pt-2 flex justify-center w-full">
             <button
               onClick={handleProceedToDoor}
-              className="px-8 py-3.5 rounded-2xl glow-btn-rose text-white font-fredoka font-bold text-sm sm:text-base shadow-2xl flex items-center justify-center space-x-2 mx-auto"
+              className="px-6 py-3 sm:px-8 sm:py-3.5 rounded-2xl glow-btn-rose text-white font-fredoka font-bold text-sm sm:text-base shadow-2xl flex items-center justify-center space-x-2 mx-auto active:scale-95 transition-transform"
             >
               <span>Unlock Your Birthday Door 🚪✨</span>
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
           </div>
         </div>
@@ -113,16 +113,16 @@ const BirthdayDoorIntro = ({ onDoorOpened }) => {
 
       {/* PHASE 2: THE ROYAL BIRTHDAY DOOR & LOCK BUTTON */}
       {phase === 'door' && (
-        <div className="max-w-md w-full mx-auto space-y-5 animate-fadeIn flex flex-col items-center justify-center text-center">
-          <div className="text-center space-y-2 flex flex-col items-center justify-center">
-            <span className="inline-flex items-center space-x-1.5 px-4 py-1 rounded-full bg-pink-500/20 text-pink-300 text-xs sm:text-sm font-bold border border-pink-500/30 shadow-md">
-              <Key className="w-4 h-4 text-amber-300" />
+        <div className="max-w-md w-full mx-auto space-y-4 sm:space-y-5 animate-fadeIn flex flex-col items-center justify-center text-center">
+          <div className="text-center space-y-1.5 sm:space-y-2 flex flex-col items-center justify-center">
+            <span className="inline-flex items-center space-x-1.5 px-3.5 py-1 rounded-full bg-pink-500/20 text-pink-300 text-xs sm:text-sm font-bold border border-pink-500/30 shadow-md">
+              <Key className="w-3.5 h-3.5 text-amber-300" />
               <span>The Magical Birthday Door</span>
             </span>
-            <h2 className="font-dancing text-5xl sm:text-6xl font-bold text-white glow-text-rose text-center">
+            <h2 className="font-dancing text-4xl sm:text-6xl font-bold text-white glow-text-rose text-center leading-tight">
               Unlock Sireesha's Kingdom 💕
             </h2>
-            <p className="text-sm sm:text-base text-pink-100/90 font-medium text-center">
+            <p className="text-xs sm:text-base text-pink-100/90 font-medium text-center px-1">
               Tap the golden heart lock on the door to open your surprises! 🔑
             </p>
           </div>
@@ -130,7 +130,7 @@ const BirthdayDoorIntro = ({ onDoorOpened }) => {
           {/* 3D Animated Door Frame */}
           <div
             style={{ perspective: '1200px' }}
-            className="relative w-72 sm:w-80 h-[390px] mx-auto rounded-t-full bg-slate-950 border-4 border-amber-300/80 p-2 shadow-[0_0_40px_rgba(245,158,11,0.5)] overflow-hidden flex items-center justify-center"
+            className="relative w-64 sm:w-80 h-[350px] sm:h-[390px] mx-auto rounded-t-full bg-slate-950 border-4 border-amber-300/80 p-2 shadow-[0_0_40px_rgba(245,158,11,0.5)] overflow-hidden flex items-center justify-center"
           >
             {/* Interior Room (Magical Kingdom Revealed Behind Swinging Doors) */}
             <div className="absolute inset-0 bg-gradient-to-b from-amber-300 via-rose-500 to-purple-950 flex flex-col items-center justify-center p-6 text-center z-0">

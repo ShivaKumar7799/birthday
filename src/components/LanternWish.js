@@ -25,16 +25,16 @@ const LanternWish = () => {
   };
 
   return (
-    <section className="glass-card p-6 sm:p-8 rounded-3xl border border-pink-500/30 max-w-xl mx-auto my-2 text-center flex flex-col items-center justify-center">
-      <h2 className="font-dancing text-5xl sm:text-6xl font-bold text-white mb-2 glow-text text-center">
+    <section className="glass-card p-4 sm:p-8 rounded-3xl border border-pink-500/30 max-w-xl mx-auto my-2 text-center flex flex-col items-center justify-center">
+      <h2 className="font-dancing text-3xl sm:text-5xl font-bold text-white mb-2 glow-text text-center">
         Release A Wish, Sireesha 🌌
       </h2>
-      <p className="text-sm sm:text-base text-pink-100/90 mb-5 font-medium text-center">
+      <p className="text-xs sm:text-base text-pink-100/90 mb-4 font-medium text-center px-1">
         {CONFIG.lanternPrompt}
       </p>
 
       {/* Night Sky Box */}
-      <div className="relative w-full h-68 sm:h-72 rounded-2xl bg-slate-950 border border-purple-500/30 overflow-hidden shadow-2xl mb-6 flex flex-col justify-end p-4 items-center">
+      <div className="relative w-full h-56 sm:h-72 rounded-2xl bg-slate-950 border border-purple-500/30 overflow-hidden shadow-2xl mb-4 sm:mb-6 flex flex-col justify-end p-3 sm:p-4 items-center">
         {/* Floating Lanterns */}
         {lanterns.map((l) => (
           <div
@@ -46,10 +46,10 @@ const LanternWish = () => {
             className="absolute flex flex-col items-center pointer-events-none"
           >
             {/* Glowing Lantern */}
-            <div className="w-11 h-15 bg-gradient-to-b from-amber-300 via-orange-400 to-amber-500 rounded-t-xl rounded-b-md shadow-[0_0_20px_rgba(245,158,11,0.9)] flex items-center justify-center relative">
-              <Flame className="w-4.5 h-4.5 text-white fill-amber-200 animate-pulse" />
+            <div className="w-10 h-14 bg-gradient-to-b from-amber-300 via-orange-400 to-amber-500 rounded-t-xl rounded-b-md shadow-[0_0_20px_rgba(245,158,11,0.9)] flex items-center justify-center relative">
+              <Flame className="w-4 h-4 text-white fill-amber-200 animate-pulse" />
             </div>
-            <span className="text-xs text-amber-200 font-bold bg-black/60 px-2.5 py-0.5 rounded-full mt-1 max-w-[140px] truncate shadow">
+            <span className="text-xs text-amber-200 font-bold bg-black/60 px-2 py-0.5 rounded-full mt-1 max-w-[130px] truncate shadow">
               {l.text}
             </span>
           </div>

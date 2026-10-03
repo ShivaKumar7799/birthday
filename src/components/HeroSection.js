@@ -35,9 +35,9 @@ const HeroSection = ({ onUnlock, isUnlocked }) => {
     if (nextCount < 5) {
       playPop();
       setClickCount(nextCount);
-      // Move anywhere on the whole display page (viewport: 18% to 82% width and 18% to 78% height)
-      const randomX = Math.floor(Math.random() * 64) + 18;
-      const randomY = Math.floor(Math.random() * 60) + 18;
+      // Move anywhere on the display within safe viewport bounds (25% to 75% width & height)
+      const randomX = Math.floor(Math.random() * 50) + 25;
+      const randomY = Math.floor(Math.random() * 50) + 25;
       setYesPos({ x: randomX, y: randomY });
 
       // Mini confetti sparkle on each tap
@@ -132,44 +132,44 @@ const HeroSection = ({ onUnlock, isUnlocked }) => {
             zIndex: 99999,
             transition: 'all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)'
           }}
-          className="px-7 py-3.5 sm:px-9 sm:py-4 rounded-full bg-gradient-to-r from-rose-500 via-pink-500 to-amber-300 text-white font-fredoka font-extrabold shadow-[0_0_35px_rgba(236,72,153,1),0_10px_30px_rgba(0,0,0,0.85)] border-3 sm:border-4 border-white flex items-center justify-center space-x-2 text-base sm:text-xl cursor-pointer hover:scale-110 active:scale-95 whitespace-nowrap animate-bounce"
+          className="px-4 py-2.5 sm:px-8 sm:py-3.5 max-w-[85vw] rounded-full bg-gradient-to-r from-rose-500 via-pink-500 to-amber-300 text-white font-fredoka font-extrabold shadow-[0_0_30px_rgba(236,72,153,0.9),0_8px_25px_rgba(0,0,0,0.85)] border-2 sm:border-4 border-white flex items-center justify-center space-x-1.5 text-xs sm:text-base cursor-pointer hover:scale-105 active:scale-95 text-center animate-bounce select-none"
         >
-          <span className="drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">{buttonLabels[clickCount]}</span>
-          <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-amber-200 shrink-0" />
+          <span className="drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] leading-tight">{buttonLabels[clickCount]}</span>
+          <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-amber-200 shrink-0" />
         </button>,
         document.body
       )}
 
       {!isUnlocked ? (
-        <div className="max-w-lg w-full glass-card-luxury p-6 sm:p-10 relative border-2 border-pink-400/40 shadow-2xl flex flex-col items-center justify-center text-center">
+        <div className="max-w-lg w-full glass-card-luxury p-4 sm:p-8 relative border-2 border-pink-400/40 shadow-2xl flex flex-col items-center justify-center text-center">
           {/* Top Floating Badge */}
-          <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-tr from-pink-500 via-rose-400 to-amber-300 p-1 shadow-2xl shadow-pink-500/40 flex items-center justify-center">
+          <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-3 sm:mb-4 rounded-full bg-gradient-to-tr from-pink-500 via-rose-400 to-amber-300 p-1 shadow-2xl shadow-pink-500/40 flex items-center justify-center">
             <div className="w-full h-full rounded-full bg-slate-950 flex items-center justify-center border border-amber-300/30">
-              <Heart className="w-12 h-12 text-pink-400 fill-pink-500/50 animate-pulse" />
+              <Heart className="w-10 h-10 sm:w-12 sm:h-12 text-pink-400 fill-pink-500/50 animate-pulse" />
             </div>
           </div>
 
-          <h1 className="font-dancing text-6xl sm:text-7xl font-bold text-white mb-3 glow-text-rose leading-tight text-center">
+          <h1 className="font-dancing text-5xl sm:text-7xl font-bold text-white mb-2 sm:mb-3 glow-text-rose leading-tight text-center">
             For {CONFIG.herName}
           </h1>
-          <p className="text-pink-100/90 text-sm sm:text-base font-medium mb-5 leading-relaxed max-w-sm mx-auto text-center">
+          <p className="text-pink-100/90 text-xs sm:text-base font-medium mb-4 sm:mb-5 leading-relaxed max-w-sm mx-auto text-center px-1">
             {CONFIG.subheading}
           </p>
 
-          <div className="bg-slate-950/60 backdrop-blur-md p-6 rounded-3xl border border-pink-500/30 mb-6 shadow-inner w-full flex flex-col items-center justify-center text-center">
-            <h3 className="font-fredoka text-xl font-semibold text-pink-300 mb-2 flex items-center justify-center space-x-2">
-              <Sparkles className="w-5 h-5 text-amber-300" />
+          <div className="bg-slate-950/60 backdrop-blur-md p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-pink-500/30 mb-4 sm:mb-6 shadow-inner w-full flex flex-col items-center justify-center text-center">
+            <h3 className="font-fredoka text-lg sm:text-xl font-semibold text-pink-300 mb-1.5 flex items-center justify-center space-x-2">
+              <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-amber-300" />
               <span>Identity Verification</span>
             </h3>
             
-            <p className="text-sm sm:text-base text-pink-100/90 mb-3 leading-relaxed text-center">
+            <p className="text-xs sm:text-base text-pink-100/90 mb-3 leading-relaxed text-center px-1">
               Are you the most gorgeous girl named <strong className="text-pink-300 font-bold">{CONFIG.herName}</strong>?
             </p>
 
             {/* Playful message on click */}
             {clickCount > 0 && clickCount < 5 && (
-              <div className="mb-4 animate-fadeIn">
-                <p className="text-xs sm:text-sm text-amber-300 font-bold bg-amber-500/20 py-2 px-5 rounded-full inline-block border border-amber-400/40 text-center shadow-md animate-pulse">
+              <div className="mb-3 animate-fadeIn">
+                <p className="text-xs sm:text-sm text-amber-300 font-bold bg-amber-500/20 py-1.5 px-4 rounded-full inline-block border border-amber-400/40 text-center shadow-md animate-pulse">
                   {playfulMessages[clickCount - 1]}
                 </p>
               </div>
@@ -177,21 +177,21 @@ const HeroSection = ({ onUnlock, isUnlocked }) => {
 
             {/* 5th click confirmation banner */}
             {clickCount >= 5 && (
-              <div className="p-5 rounded-2xl bg-gradient-to-r from-pink-500 via-rose-500 to-amber-400 text-white font-fredoka font-bold text-base sm:text-xl animate-pulse shadow-2xl flex flex-col items-center justify-center space-y-1 mb-4">
+              <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-pink-500 via-rose-500 to-amber-400 text-white font-fredoka font-bold text-sm sm:text-xl animate-pulse shadow-2xl flex flex-col items-center justify-center space-y-1 mb-3">
                 <span>🎉 100% Sireesha Verified! 🎈🎈🎈</span>
-                <span className="text-xs sm:text-sm font-medium text-pink-100">Releasing birthday balloons & opening Step 2... 💕</span>
+                <span className="text-xs sm:text-sm font-medium text-pink-100">Releasing birthday balloons & unlocking your surprises... 💕</span>
               </div>
             )}
 
             {/* Button Area */}
             {clickCount === 0 && (
-              <div className="min-h-[85px] w-full flex items-center justify-center">
+              <div className="min-h-[75px] sm:min-h-[85px] w-full flex items-center justify-center py-1">
                 <button
                   onClick={handleYesClick}
-                  className="px-8 py-4 sm:px-10 sm:py-5 rounded-full bg-gradient-to-r from-rose-500 via-pink-500 to-amber-300 text-white font-fredoka font-extrabold shadow-[0_0_25px_rgba(236,72,153,0.85),0_6px_20px_rgba(0,0,0,0.6)] border-3 sm:border-4 border-white flex items-center justify-center space-x-2 text-base sm:text-xl cursor-pointer hover:scale-105 active:scale-95 transition-all animate-pulse"
+                  className="px-5 py-3 sm:px-9 sm:py-4 rounded-full bg-gradient-to-r from-rose-500 via-pink-500 to-amber-300 text-white font-fredoka font-extrabold shadow-[0_0_25px_rgba(236,72,153,0.85),0_6px_20px_rgba(0,0,0,0.6)] border-2 sm:border-4 border-white flex items-center justify-center space-x-2 text-sm sm:text-lg cursor-pointer hover:scale-105 active:scale-95 transition-all animate-pulse max-w-full text-center"
                 >
-                  <span className="drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)]">{buttonLabels[0]}</span>
-                  <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-amber-200 shrink-0" />
+                  <span className="drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)] leading-tight">{buttonLabels[0]}</span>
+                  <Sparkles className="w-4 h-4 sm:w-6 sm:h-6 text-amber-200 shrink-0" />
                 </button>
               </div>
             )}

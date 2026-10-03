@@ -127,7 +127,7 @@ const BalloonIntro = ({ onStartJourney }) => {
             </div>
             <div className="flex items-center space-x-2 bg-slate-900/60 p-2.5 rounded-xl border border-pink-500/20">
               <span className="w-6 h-6 rounded-full bg-amber-500 text-slate-950 font-bold flex items-center justify-center shrink-0">3</span>
-              <span>Watch the balloons blow & launch your steps! 🎈</span>
+              <span>Watch the balloons blow & launch your surprises! 🎈</span>
             </div>
           </div>
 

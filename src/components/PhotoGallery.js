@@ -29,17 +29,17 @@ const PhotoGallery = ({ onComplete }) => {
   };
 
   return (
-    <section className="glass-card p-6 sm:p-10 rounded-3xl border border-pink-500/30 max-w-4xl mx-auto my-2 text-center flex flex-col items-center justify-center w-full">
-      <h2 className="font-dancing text-5xl sm:text-6xl font-bold text-white mb-2 glow-text text-center">
+    <section className="glass-card p-4 sm:p-8 rounded-3xl border border-pink-500/30 max-w-4xl mx-auto my-2 text-center flex flex-col items-center justify-center w-full">
+      <h2 className="font-dancing text-4xl sm:text-6xl font-bold text-white mb-2 glow-text text-center">
         Our Special Memories 📸
       </h2>
-      <p className="text-sm sm:text-base text-pink-100/90 mb-4 font-medium text-center">
+      <p className="text-xs sm:text-base text-pink-100/90 mb-3 sm:mb-4 font-medium text-center px-1">
         Tap all cards to flip them over and unlock your final grand surprise! ✨
       </p>
 
       {/* Progress pill */}
-      <div className="mb-6 flex items-center justify-center space-x-2">
-        <span className="px-4 py-1 rounded-full bg-pink-500/20 text-pink-200 border border-pink-400/30 text-xs sm:text-sm font-bold shadow-md">
+      <div className="mb-4 sm:mb-6 flex items-center justify-center space-x-2">
+        <span className="px-3.5 py-1 rounded-full bg-pink-500/20 text-pink-200 border border-pink-400/30 text-xs sm:text-sm font-bold shadow-md">
           {viewedIds.size === memories.length 
             ? "✨ All Memories Explored!" 
             : `Cards Flipped: ${viewedIds.size} of ${memories.length}`}
@@ -47,7 +47,7 @@ const PhotoGallery = ({ onComplete }) => {
       </div>
 
       {/* Grid of Polaroid Memory Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 w-full">
+      <div className="grid grid-cols-1 min-[480px]:grid-cols-2 md:grid-cols-4 gap-3.5 sm:gap-6 w-full">
         {memories.map((mem) => {
           const isFlipped = flippedId === mem.id;
           const isViewed = viewedIds.has(mem.id);
@@ -56,10 +56,10 @@ const PhotoGallery = ({ onComplete }) => {
             <div
               key={mem.id}
               onClick={() => handleCardClick(mem.id)}
-              className="h-68 sm:h-72 rounded-2xl cursor-pointer perspective-1000 transition-all duration-300 transform hover:scale-105 flex flex-col items-center justify-center relative"
+              className="h-60 sm:h-72 rounded-2xl cursor-pointer perspective-1000 transition-all duration-300 transform hover:scale-105 active:scale-95 flex flex-col items-center justify-center relative select-none"
             >
               <div
-                className={`w-full h-full rounded-2xl transition-all duration-500 p-5 flex flex-col justify-between items-center shadow-xl text-center ${
+                className={`w-full h-full rounded-2xl transition-all duration-500 p-3.5 sm:p-5 flex flex-col justify-between items-center shadow-xl text-center ${
                   isFlipped 
                     ? 'bg-gradient-to-br from-slate-900 via-purple-950 to-pink-950 border-2 border-pink-400 text-center' 
                     : `bg-gradient-to-br ${mem.bgGradient} border border-white/30 text-center`
@@ -112,7 +112,7 @@ const PhotoGallery = ({ onComplete }) => {
         <div className="mt-8 p-5 rounded-2xl bg-gradient-to-r from-pink-500 via-rose-500 to-amber-400 text-white font-fredoka font-bold text-base sm:text-lg animate-pulse shadow-2xl flex flex-col items-center justify-center space-y-1 w-full max-w-lg">
           <span>🎉 All Memories Explored, Sireesha! 💖</span>
           <span className="text-xs sm:text-sm font-medium text-pink-100">
-            Unlocking the final step: Sky Wish Lanterns & Finale in 2s... 🌟
+            Unlocking Sky Wish Lanterns & Grand Finale in 2s... 🌟
           </span>
         </div>
       )}

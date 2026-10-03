@@ -66,31 +66,31 @@ const MemoryMatchGame = ({ onComplete }) => {
   };
 
   return (
-    <div className="glass-card p-6 sm:p-8 rounded-3xl border border-pink-500/30 max-w-xl mx-auto my-2 text-center flex flex-col items-center justify-center">
-      <div className="flex items-center justify-center space-x-3 mb-3 w-full relative">
-        <h2 className="font-fredoka text-2xl sm:text-3xl font-bold text-white text-center">
+    <div className="glass-card p-4 sm:p-7 rounded-3xl border border-pink-500/30 max-w-xl mx-auto my-2 text-center flex flex-col items-center justify-center">
+      <div className="flex items-center justify-center space-x-3 mb-2.5 w-full relative">
+        <h2 className="font-fredoka text-xl sm:text-3xl font-bold text-white text-center">
           Romantic Memory Match 🧩
         </h2>
         <button
           onClick={initGame}
-          className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-pink-200 transition-colors absolute right-0"
+          className="p-1.5 sm:p-2 rounded-full bg-white/10 hover:bg-white/20 text-pink-200 transition-colors absolute right-0"
           title="Restart Game"
         >
-          <RefreshCw className="w-5 h-5" />
+          <RefreshCw className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
       </div>
 
-      <p className="text-sm sm:text-base text-pink-100/90 mb-4 text-center">
+      <p className="text-xs sm:text-base text-pink-100/90 mb-3 text-center px-1">
         Match all the cute pairs to prove how sharp Sireesha's mind is! ✨
       </p>
 
-      <div className="flex items-center justify-center space-x-6 text-sm sm:text-base text-pink-200 font-semibold mb-4 px-2 text-center">
-        <span>Moves: <strong className="text-pink-400 text-base sm:text-lg">{moves}</strong></span>
-        <span>Pairs Matched: <strong className="text-pink-400 text-base sm:text-lg">{matched.length / 2} / {CARD_ITEMS.length}</strong></span>
+      <div className="flex items-center justify-center space-x-4 sm:space-x-6 text-xs sm:text-base text-pink-200 font-semibold mb-3.5 px-2 text-center">
+        <span>Moves: <strong className="text-pink-400 text-sm sm:text-lg">{moves}</strong></span>
+        <span>Pairs Matched: <strong className="text-pink-400 text-sm sm:text-lg">{matched.length / 2} / {CARD_ITEMS.length}</strong></span>
       </div>
 
       {/* Grid of Cards */}
-      <div className="grid grid-cols-4 gap-3.5 w-full">
+      <div className="grid grid-cols-4 gap-2 sm:gap-3.5 w-full">
         {cards.map((card, idx) => {
           const isFlipped = flipped.includes(idx) || matched.includes(idx);
           const isCardMatched = matched.includes(idx);
@@ -130,7 +130,7 @@ const MemoryMatchGame = ({ onComplete }) => {
             You matched all cards in just <strong className="text-amber-300 text-lg">{moves} moves</strong>! Level 1 Complete! 👑
           </p>
           <p className="text-xs sm:text-sm text-amber-200 mt-3 font-semibold animate-pulse">
-            ✨ Moving to Step 3: Loved Ones' Quiz... 💕
+            ✨ Moving to Loved Ones' Quiz... 💕
           </p>
         </div>
       )}

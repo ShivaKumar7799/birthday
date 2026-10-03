@@ -79,20 +79,11 @@ function App() {
         </main>
       ) : (
         <>
-          {/* Fixed Progress Bar Header */}
-          <div className="sticky top-[57px] sm:top-[61px] z-40 w-full bg-slate-950/90 backdrop-blur-md border-b border-pink-500/20 py-2.5 px-4 shadow-xl">
-            <div className="max-w-4xl mx-auto flex items-center justify-between sm:justify-between text-sm">
-              <div className="flex items-center space-x-2.5">
-                <span className="px-3.5 py-1 rounded-full bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold text-xs sm:text-sm shadow-md">
-                  Step {currentStep} of 7
-                </span>
-                <span className="font-fredoka font-bold text-pink-200 hidden sm:inline text-base">
-                  {stepsList[currentStep - 1]?.name}
-                </span>
-              </div>
-
-              {/* Timeline Step Buttons - 100% Clickable Navigation */}
-              <div className="flex items-center space-x-1.5 sm:space-x-2.5">
+          {/* Fixed Navigation Header - Only Step Icons */}
+          <div className="sticky top-[57px] sm:top-[61px] z-40 w-full bg-slate-950/90 backdrop-blur-md border-b border-pink-500/20 py-2.5 px-3 shadow-xl">
+            <div className="max-w-md mx-auto flex items-center justify-center">
+              {/* Step Icons Row - Centered & 100% Clickable */}
+              <div className="flex items-center justify-center space-x-2 sm:space-x-3.5">
                 {stepsList.map((step) => {
                   const isCurrent = step.id === currentStep;
 
@@ -100,14 +91,14 @@ function App() {
                     <button
                       key={step.id}
                       onClick={() => jumpToStep(step.id)}
-                      className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-sm sm:text-base font-bold transition-all cursor-pointer ${
+                      className={`w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center text-sm sm:text-lg font-bold transition-all cursor-pointer ${
                         isCurrent
-                          ? 'bg-gradient-to-tr from-amber-400 via-pink-500 to-rose-500 text-slate-950 ring-4 ring-pink-400/60 scale-110 shadow-lg shadow-pink-500/50'
-                          : 'bg-white/10 hover:bg-pink-600/70 text-white hover:scale-110 border border-white/20 hover:border-pink-400/60 shadow-md'
+                          ? 'bg-gradient-to-tr from-amber-400 via-pink-500 to-rose-500 text-slate-950 ring-2 sm:ring-4 ring-pink-400/60 scale-110 shadow-lg shadow-pink-500/50'
+                          : 'bg-white/10 hover:bg-pink-600/70 text-white hover:scale-105 border border-white/20 hover:border-pink-400/60 shadow-md'
                       }`}
-                      title={`Go to Step ${step.id}: ${step.name}`}
+                      title={step.name}
                     >
-                      <span className="drop-shadow-sm">{step.icon}</span>
+                      <span className="drop-shadow-sm leading-none">{step.icon}</span>
                     </button>
                   );
                 })}
@@ -116,8 +107,8 @@ function App() {
           </div>
 
           {/* Main Single Step Display Area - Clean Top Aligned & Centered */}
-          <main className="container mx-auto px-4 z-10 pt-3 pb-8 flex-grow flex flex-col justify-center items-center text-center">
-            <div className="max-w-3xl w-full mx-auto animate-fadeIn flex flex-col justify-center items-center space-y-4 text-center">
+          <main className="container mx-auto px-2 sm:px-4 z-10 pt-2 pb-6 flex-grow flex flex-col justify-center items-center text-center">
+            <div className="max-w-3xl w-full mx-auto animate-fadeIn flex flex-col justify-center items-center space-y-3 sm:space-y-4 text-center">
               
               {/* STEP 1: Doorway of Love */}
               {currentStep === 1 && (
@@ -174,15 +165,15 @@ function App() {
                   <LanternWish />
 
                   {/* Grand Love Celebration Card */}
-                  <div className="glass-card-gold p-8 sm:p-10 rounded-3xl max-w-xl mx-auto text-center border-2 border-amber-300/60 shadow-2xl animate-pulse-glow mt-6 flex flex-col items-center justify-center">
-                    <Heart className="w-16 h-16 text-pink-400 fill-pink-400 mx-auto mb-3 animate-bounce" />
-                    <h2 className="font-dancing text-5xl sm:text-6xl font-bold text-white glow-text-gold mb-3 text-center">
+                  <div className="glass-card-gold p-5 sm:p-10 rounded-3xl max-w-xl mx-auto text-center border-2 border-amber-300/60 shadow-2xl animate-pulse-glow mt-4 sm:mt-6 flex flex-col items-center justify-center">
+                    <Heart className="w-12 h-12 sm:w-16 sm:h-16 text-pink-400 fill-pink-400 mx-auto mb-2 sm:mb-3 animate-bounce" />
+                    <h2 className="font-dancing text-3xl sm:text-5xl font-bold text-white glow-text-gold mb-2 sm:mb-3 text-center leading-tight">
                       Sireesha, You Are Loved Beyond Measure 💖
                     </h2>
-                    <p className="text-sm sm:text-base text-pink-100 leading-relaxed font-medium mb-3 text-center">
-                      You have completed all 7 magical steps of your birthday surprise website! We hope this brought a huge smile to your face today and forever! 🥰
+                    <p className="text-xs sm:text-base text-pink-100 leading-relaxed font-medium mb-3 text-center px-1">
+                      You have completed all the magical surprises of your birthday website! We hope this brought a huge smile to your face today and forever! 🥰
                     </p>
-                    <div className="p-3.5 rounded-2xl bg-black/40 border border-amber-300/40 text-amber-200 text-sm sm:text-base font-bold mb-2 text-center">
+                    <div className="p-3 sm:p-3.5 rounded-2xl bg-black/40 border border-amber-300/40 text-amber-200 text-xs sm:text-base font-bold mb-1 text-center">
                       💖 Forever & Always Created With All Our Love by Your Loved Ones 💕
                     </div>
                   </div>

@@ -64,31 +64,31 @@ const HeartCatcherGame = () => {
   };
 
   return (
-    <section className="glass-card p-6 sm:p-8 rounded-3xl border border-pink-500/30 max-w-xl mx-auto my-2 text-center flex flex-col items-center justify-center">
-      <h2 className="font-fredoka text-3xl sm:text-4xl font-bold text-white mb-2 text-center">
+    <section className="glass-card p-4 sm:p-8 rounded-3xl border border-pink-500/30 max-w-xl mx-auto my-2 text-center flex flex-col items-center justify-center">
+      <h2 className="font-fredoka text-xl sm:text-3xl font-bold text-white mb-1.5 text-center">
         Catch Sireesha's Love Tokens! 🎮
       </h2>
-      <p className="text-sm sm:text-base text-pink-100/90 mb-4 text-center">
+      <p className="text-xs sm:text-base text-pink-100/90 mb-3 text-center px-1">
         Tap as many falling hearts as you can before time runs out! ✨
       </p>
 
-      <div className="flex items-center justify-center space-x-6 text-sm sm:text-base font-bold text-pink-200 bg-slate-900/60 p-3.5 rounded-xl mb-4 border border-pink-500/20 w-full text-center">
-        <span>Score: <strong className="text-pink-400 text-lg">{score}</strong></span>
-        <span>Time Left: <strong className="text-amber-300 text-lg">{timeLeft}s</strong></span>
-        <span>High Score: <strong className="text-purple-300 text-lg">{highScore}</strong></span>
+      <div className="flex items-center justify-around text-xs sm:text-base font-bold text-pink-200 bg-slate-900/60 p-2.5 sm:p-3.5 rounded-xl mb-3 sm:mb-4 border border-pink-500/20 w-full text-center">
+        <span>Score: <strong className="text-pink-400 text-sm sm:text-lg">{score}</strong></span>
+        <span>Time Left: <strong className="text-amber-300 text-sm sm:text-lg">{timeLeft}s</strong></span>
+        <span>High Score: <strong className="text-purple-300 text-sm sm:text-lg">{highScore}</strong></span>
       </div>
 
       {/* Game Field */}
-      <div className="relative w-full h-76 rounded-2xl bg-slate-900/80 border-2 border-pink-500/30 overflow-hidden shadow-inner flex flex-col items-center justify-center">
+      <div className="relative w-full h-64 sm:h-72 rounded-2xl bg-slate-900/80 border-2 border-pink-500/30 overflow-hidden shadow-inner flex flex-col items-center justify-center">
         {!isPlaying && !isGameOver && (
           <div className="text-center p-4 z-10 flex flex-col items-center justify-center">
-            <Trophy className="w-14 h-14 text-amber-300 mx-auto mb-2 animate-bounce" />
-            <p className="text-sm sm:text-base text-pink-200 mb-4 font-medium text-center">Ready to test your speed, Sireesha?</p>
+            <Trophy className="w-12 h-12 sm:w-14 sm:h-14 text-amber-300 mx-auto mb-2 animate-bounce" />
+            <p className="text-xs sm:text-base text-pink-200 mb-3 sm:mb-4 font-medium text-center">Ready to test your speed, Sireesha?</p>
             <button
               onClick={startGame}
-              className="px-8 py-3.5 rounded-full bg-pink-600 hover:bg-pink-500 text-white font-fredoka font-semibold text-base shadow-lg flex items-center justify-center space-x-2 mx-auto"
+              className="px-6 py-3 sm:px-8 sm:py-3.5 rounded-full bg-pink-600 hover:bg-pink-500 text-white font-fredoka font-semibold text-sm sm:text-base shadow-lg flex items-center justify-center space-x-2 mx-auto active:scale-95 transition-transform"
             >
-              <Play className="w-5 h-5 fill-current" />
+              <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-current" />
               <span>Start Catching! 🚀</span>
             </button>
           </div>
