@@ -153,7 +153,7 @@ const BalloonIntro = ({ onStartJourney }) => {
       <div className="max-w-md mx-auto space-y-6 my-16">
         <div className="glass-card p-6 rounded-3xl border border-pink-500/30 text-center space-y-2 flex flex-col items-center justify-center">
           <span className="text-2xl">💖</span>
-          <h3 className="font-fredoka text-lg font-bold text-pink-300 text-center">Are You Ready, Sireesha?</h3>
+          <h3 className="font-fredoka text-lg font-bold text-pink-300 text-center">Are You Ready, {CONFIG.herName}?</h3>
           <p className="text-xs text-pink-100/90 leading-relaxed font-medium text-center">
             Seven magical levels of minigames, puzzles, birthday cake, and love letters are waiting for you!
           </p>

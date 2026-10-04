@@ -80,8 +80,8 @@ const LoveQuiz = ({ onComplete }) => {
   const getVerdict = () => {
     return {
       title: "👑 100% Soulmate Perfection!",
-      badge: "Loved Ones' Certified Queen & Soulmate",
-      message: "You know your loved ones inside and out! Every single thought, smile, and heartbeat revolves around you, Sireesha. You truly own their whole hearts! 💕"
+      badge: `${CONFIG.hisName}' Certified Queen & Soulmate`,
+      message: `You know your loved ones inside and out! Every single thought, smile, and heartbeat revolves around you, ${CONFIG.herName}. You truly own their whole hearts! 💕`
     };
   };
 

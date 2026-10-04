@@ -120,7 +120,7 @@ const BirthdayDoorIntro = ({ onDoorOpened }) => {
               <span>The Magical Birthday Door</span>
             </span>
             <h2 className="font-dancing text-4xl sm:text-6xl font-bold text-white glow-text-rose text-center leading-tight">
-              Unlock Sireesha's Kingdom 💕
+              Unlock {CONFIG.herName}'s Kingdom 💕
             </h2>
             <p className="text-xs sm:text-base text-pink-100/90 font-medium text-center px-1">
               Tap the golden heart lock on the door to open your surprises! 🔑
@@ -137,7 +137,7 @@ const BirthdayDoorIntro = ({ onDoorOpened }) => {
               <div className="space-y-3 animate-pulse">
                 <Sparkles className="w-12 h-12 text-amber-200 mx-auto animate-spin" style={{ animationDuration: '6s' }} />
                 <h3 className="font-dancing text-4xl sm:text-5xl font-extrabold text-white glow-text-gold drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
-                  Welcome Sireesha! 🎉
+                  Welcome {CONFIG.herName}! 🎉
                 </h3>
                 <p className="font-fredoka text-amber-100 text-sm sm:text-base font-bold drop-shadow">
                   Your Magical Kingdom is Open! 💕

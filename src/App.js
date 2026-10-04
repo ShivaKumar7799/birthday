@@ -15,6 +15,7 @@ import RunawayButtonGame from './components/RunawayButtonGame';
 import LanternWish from './components/LanternWish';
 import Footer from './components/Footer';
 import { Heart } from 'lucide-react';
+import { CONFIG } from './data/config';
 import { playPop, playWin, startBGM } from './utils/sound';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
 
   // Directly play the birthday song on page load / first touch anywhere
   useEffect(() => {
+    document.title = `For My Dearest ${CONFIG.herName} 💖 | A Special Surprise`;
     // Attempt direct play immediately
     startBGM();
 
@@ -195,13 +197,13 @@ function App() {
                   <div className="glass-card-gold p-5 sm:p-10 rounded-3xl max-w-xl mx-auto text-center border-2 border-amber-300/60 shadow-2xl animate-pulse-glow mt-4 sm:mt-6 flex flex-col items-center justify-center">
                     <Heart className="w-12 h-12 sm:w-16 sm:h-16 text-pink-400 fill-pink-400 mx-auto mb-2 sm:mb-3 animate-bounce" />
                     <h2 className="font-dancing text-3xl sm:text-5xl font-bold text-white glow-text-gold mb-2 sm:mb-3 text-center leading-tight">
-                      Sireesha, You Are Loved Beyond Measure 💖
+                      {CONFIG.herName}, You Are Loved Beyond Measure 💖
                     </h2>
                     <p className="text-xs sm:text-base text-pink-100 leading-relaxed font-medium mb-3 text-center px-1">
                       You have completed all the magical surprises of your birthday website! We hope this brought a huge smile to your face today and forever! 🥰
                     </p>
                     <div className="p-3 sm:p-3.5 rounded-2xl bg-black/40 border border-amber-300/40 text-amber-200 text-xs sm:text-base font-bold mb-1 text-center">
-                      💖 Forever & Always Created With All Our Love by Your Loved Ones 💕
+                      💖 Forever & Always Created With All Our Love by {CONFIG.hisName} 💕
                     </div>
                   </div>
                 </div>

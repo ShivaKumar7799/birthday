@@ -1,4 +1,5 @@
-// Web Audio Synthesizer & Speech Voice Harmony for Sireesha's Birthday Celebration
+// Web Audio Synthesizer & Speech Voice Harmony for Birthday Celebration
+import { CONFIG } from '../data/config';
 
 let audioCtx = null;
 let bgmGain = null;
@@ -184,42 +185,6 @@ export const playBlow = () => {
   }
 };
 
-// Complete Authentic Musical Notes for "Happy Birthday to You"
-const HAPPY_BIRTHDAY_MELODY = [
-  // Bar 1: "Happy birthday to you"
-  { note: 261.63, duration: 0.35, pause: 0.05 }, // Hap- (C4)
-  { note: 261.63, duration: 0.35, pause: 0.05 }, // py (C4)
-  { note: 293.66, duration: 0.65, pause: 0.08 }, // birth- (D4)
-  { note: 261.63, duration: 0.65, pause: 0.08 }, // day (C4)
-  { note: 349.23, duration: 0.65, pause: 0.08 }, // to (F4)
-  { note: 329.63, duration: 1.15, pause: 0.25 }, // you (E4)
-  
-  // Bar 2: "Happy birthday to you"
-  { note: 261.63, duration: 0.35, pause: 0.05 }, // Hap- (C4)
-  { note: 261.63, duration: 0.35, pause: 0.05 }, // py (C4)
-  { note: 293.66, duration: 0.65, pause: 0.08 }, // birth- (D4)
-  { note: 261.63, duration: 0.65, pause: 0.08 }, // day (C4)
-  { note: 392.00, duration: 0.65, pause: 0.08 }, // to (G4)
-  { note: 349.23, duration: 1.15, pause: 0.25 }, // you (F4)
-  
-  // Bar 3: "Happy birthday dear Sireesha"
-  { note: 261.63, duration: 0.35, pause: 0.05 }, // Hap- (C4)
-  { note: 261.63, duration: 0.35, pause: 0.05 }, // py (C4)
-  { note: 523.25, duration: 0.65, pause: 0.08 }, // birth- (C5)
-  { note: 440.00, duration: 0.65, pause: 0.08 }, // day (A4)
-  { note: 349.23, duration: 0.65, pause: 0.08 }, // dear (F4)
-  { note: 329.63, duration: 0.65, pause: 0.08 }, // Si- (E4)
-  { note: 293.66, duration: 1.15, pause: 0.25 }, // reesha (D4)
-
-  // Bar 4: "Happy birthday to you"
-  { note: 466.16, duration: 0.35, pause: 0.05 }, // Hap- (Bb4)
-  { note: 466.16, duration: 0.35, pause: 0.05 }, // py (Bb4)
-  { note: 440.00, duration: 0.65, pause: 0.08 }, // birth- (A4)
-  { note: 349.23, duration: 0.65, pause: 0.08 }, // day (F4)
-  { note: 392.00, duration: 0.65, pause: 0.08 }, // to (G4)
-  { note: 349.23, duration: 1.40, pause: 0.80 }  // you! (F4)
-];
-
 // Play rich music-box chime note
 function playChimeNote(ctx, destination, freq, duration) {
   try {
@@ -248,30 +213,115 @@ function playChimeNote(ctx, destination, freq, duration) {
   } catch (e) {}
 }
 
-// Multi-Voice Birthday Wishes for Sirisha (phonetic spelling for accurate TTS pronunciation)
-const BIRTHDAY_VOICE_SCRIPTS = [
+// Estimate syllable count of the name to tune Bar 3 of Happy Birthday melody
+export function estimateSyllables(word) {
+  if (!word) return 2;
+  const clean = word.toLowerCase().trim().replace(/[^a-z]/g, '');
+  if (clean.length <= 3) return 1;
+  const matches = clean.match(/[aeiouy]+/g);
+  let count = matches ? matches.length : 1;
+  if (clean.endsWith('e') && !clean.endsWith('ee') && !clean.endsWith('le') && count > 1) {
+    count--;
+  }
+  return Math.max(1, count);
+}
+
+// Dynamically generate musical melody for "Happy Birthday to You" customized to person's name
+export function buildHappyBirthdayMelody(name = CONFIG.herName) {
+  // Bar 1: "Happy birthday to you"
+  const bar1 = [
+    { note: 261.63, duration: 0.35, pause: 0.05 }, // Hap- (C4)
+    { note: 261.63, duration: 0.35, pause: 0.05 }, // py (C4)
+    { note: 293.66, duration: 0.65, pause: 0.08 }, // birth- (D4)
+    { note: 261.63, duration: 0.65, pause: 0.08 }, // day (C4)
+    { note: 349.23, duration: 0.65, pause: 0.08 }, // to (F4)
+    { note: 329.63, duration: 1.15, pause: 0.25 }, // you (E4)
+  ];
+
+  // Bar 2: "Happy birthday to you"
+  const bar2 = [
+    { note: 261.63, duration: 0.35, pause: 0.05 }, // Hap- (C4)
+    { note: 261.63, duration: 0.35, pause: 0.05 }, // py (C4)
+    { note: 293.66, duration: 0.65, pause: 0.08 }, // birth- (D4)
+    { note: 261.63, duration: 0.65, pause: 0.08 }, // day (C4)
+    { note: 392.00, duration: 0.65, pause: 0.08 }, // to (G4)
+    { note: 349.23, duration: 1.15, pause: 0.25 }, // you (F4)
+  ];
+
+  // Bar 3 prefix: "Happy birthday dear..."
+  const bar3Prefix = [
+    { note: 261.63, duration: 0.35, pause: 0.05 }, // Hap- (C4)
+    { note: 261.63, duration: 0.35, pause: 0.05 }, // py (C4)
+    { note: 523.25, duration: 0.65, pause: 0.08 }, // birth- (C5)
+    { note: 440.00, duration: 0.65, pause: 0.08 }, // day (A4)
+    { note: 349.23, duration: 0.65, pause: 0.08 }, // dear (F4)
+  ];
+
+  // Bar 3 name notes tailored dynamically to the syllable cadence of the name
+  const syllables = estimateSyllables(name);
+  let nameNotes = [];
+
+  if (syllables <= 1) {
+    nameNotes = [
+      { note: 329.63, duration: 0.45, pause: 0.05 }, // E4
+      { note: 293.66, duration: 1.25, pause: 0.25 }  // D4
+    ];
+  } else if (syllables === 2) {
+    nameNotes = [
+      { note: 329.63, duration: 0.65, pause: 0.08 }, // E4
+      { note: 293.66, duration: 1.15, pause: 0.25 }  // D4
+    ];
+  } else if (syllables === 3) {
+    nameNotes = [
+      { note: 329.63, duration: 0.40, pause: 0.06 }, // E4
+      { note: 329.63, duration: 0.40, pause: 0.06 }, // E4
+      { note: 293.66, duration: 1.15, pause: 0.25 }  // D4
+    ];
+  } else {
+    const stepDuration = Math.max(0.25, 0.9 / (syllables - 1));
+    for (let i = 0; i < syllables - 1; i++) {
+      nameNotes.push({ note: 329.63, duration: stepDuration, pause: 0.05 });
+    }
+    nameNotes.push({ note: 293.66, duration: 1.15, pause: 0.25 });
+  }
+
+  // Bar 4: "Happy birthday to you"
+  const bar4 = [
+    { note: 466.16, duration: 0.35, pause: 0.05 }, // Hap- (Bb4)
+    { note: 466.16, duration: 0.35, pause: 0.05 }, // py (Bb4)
+    { note: 440.00, duration: 0.65, pause: 0.08 }, // birth- (A4)
+    { note: 349.23, duration: 0.65, pause: 0.08 }, // day (F4)
+    { note: 392.00, duration: 0.65, pause: 0.08 }, // to (G4)
+    { note: 349.23, duration: 1.40, pause: 0.80 }  // you! (F4)
+  ];
+
+  return [...bar1, ...bar2, ...bar3Prefix, ...nameNotes, ...bar4];
+}
+
+// Multi-Voice Birthday Wishes dynamically generated for the person's name
+export const getBirthdayVoiceScripts = (name = CONFIG.herName) => [
   {
-    text: "Happy birthday to you! Happy birthday to you! Happy birthday dear Sirisha! Happy birthday to you!",
+    text: `Happy birthday to you! Happy birthday to you! Happy birthday dear ${name}! Happy birthday to you!`,
     pitch: 1.35,
     rate: 0.95
   },
   {
-    text: "Happy birthday to you Sirisha! Wishing you endless love, joy, and bright smiles! We love you so much!",
+    text: `Happy birthday to you ${name}! Wishing you endless love, joy, and bright smiles! We love you so much!`,
     pitch: 1.08,
     rate: 0.92
   },
   {
-    text: "Happy birthday to you! Happy birthday dear Sirisha! May all your wishes come true today and forever!",
+    text: `Happy birthday to you! Happy birthday dear ${name}! May all your wishes come true today and forever!`,
     pitch: 1.25,
     rate: 0.98
   },
   {
-    text: "Hip hip hooray! Happy birthday to our dearest Queen Sirisha! Sending you all our love!",
+    text: `Hip hip hooray! Happy birthday to our dearest ${name}! Sending you all our love!`,
     pitch: 1.45,
     rate: 1.05
   },
   {
-    text: "Happy birthday to you, Sirisha! From all your loved ones, you are cherished beyond words. Happy birthday!",
+    text: `Happy birthday to you, ${name}! From all your loved ones, you are cherished beyond words. Happy birthday!`,
     pitch: 0.98,
     rate: 0.88
   }
@@ -284,7 +334,8 @@ const playNextVoice = () => {
     window.speechSynthesis.cancel();
 
     const voices = window.speechSynthesis.getVoices() || [];
-    const script = BIRTHDAY_VOICE_SCRIPTS[voiceScriptIndex % BIRTHDAY_VOICE_SCRIPTS.length];
+    const voiceScripts = getBirthdayVoiceScripts(CONFIG.herName);
+    const script = voiceScripts[voiceScriptIndex % voiceScripts.length];
     voiceScriptIndex++;
 
     const utterance = new SpeechSynthesisUtterance(script.text);
@@ -317,7 +368,7 @@ const playNextVoice = () => {
   }
 };
 
-// Start background "Happy Birthday to You Sireesha" melody and multi-voice greetings
+// Start background "Happy Birthday to You" melody and multi-voice greetings tuned to person
 export const startBGM = () => {
   if (isBgmPlaying || isMuted) return;
   try {
@@ -330,14 +381,16 @@ export const startBGM = () => {
     bgmGain.gain.setValueAtTime(0.12, ctx.currentTime);
     bgmGain.connect(ctx.destination);
 
+    const melody = buildHappyBirthdayMelody(CONFIG.herName);
     let noteIdx = 0;
+
     const playMelody = () => {
       if (!isBgmPlaying || isMuted) return;
 
-      const current = HAPPY_BIRTHDAY_MELODY[noteIdx];
+      const current = melody[noteIdx];
       playChimeNote(ctx, bgmGain, current.note, current.duration);
 
-      noteIdx = (noteIdx + 1) % HAPPY_BIRTHDAY_MELODY.length;
+      noteIdx = (noteIdx + 1) % melody.length;
       const waitTime = (current.duration + current.pause) * 1000;
 
       if (isBgmPlaying) {

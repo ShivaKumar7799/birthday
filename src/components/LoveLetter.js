@@ -19,7 +19,7 @@ const LoveLetter = ({ onComplete }) => {
   return (
     <section className="glass-card p-4 sm:p-8 rounded-3xl border border-pink-500/30 max-w-2xl mx-auto my-2 text-center relative overflow-hidden flex flex-col items-center justify-center">
       <h2 className="font-dancing text-4xl sm:text-6xl font-bold text-white mb-2 glow-text text-center">
-        A Letter For Sireesha 💌
+        A Letter For {CONFIG.herName} 💌
       </h2>
       <p className="text-xs sm:text-base text-pink-100/90 mb-4 sm:mb-5 font-medium text-center px-1">
         Tap the heart envelope to unseal the secret letter inside...
@@ -35,7 +35,7 @@ const LoveLetter = ({ onComplete }) => {
                 <Heart className="w-10 h-10 sm:w-12 sm:h-12 text-white fill-white" />
               </div>
               <h3 className="font-dancing text-3xl sm:text-5xl font-bold text-white glow-text text-center">
-                To My Princess Sireesha 👑
+                To My Princess {CONFIG.herName} 👑
               </h3>
               <p className="text-xs sm:text-sm text-pink-100/90 mt-2 font-semibold bg-black/20 px-4 py-1.5 rounded-full text-center">
                 Tap to open 💌

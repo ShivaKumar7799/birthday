@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Volume2, VolumeX, Music, Heart } from 'lucide-react';
+import { CONFIG } from '../data/config';
 import { toggleBGM, toggleMute, playPop, getIsBgmPlaying, subscribeBGM } from '../utils/sound';
 
 const Navbar = ({ activeSection, setActiveSection }) => {
@@ -35,7 +36,7 @@ const Navbar = ({ activeSection, setActiveSection }) => {
             <Heart className="w-5 h-5 fill-current" />
           </div>
           <span className="font-dancing text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-300 via-rose-300 to-purple-300 glow-text">
-            Sireesha 💕
+            {CONFIG.herName} 💕
           </span>
         </div>
 

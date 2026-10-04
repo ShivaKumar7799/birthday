@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import confetti from 'canvas-confetti';
 import { Play, Trophy, Sparkles } from 'lucide-react';
+import { CONFIG } from '../data/config';
 import { playHeartCatch, playPop, playWin } from '../utils/sound';
 
 const ICONS = ['💖', '👑', '🎂', '🌹', '✨', '🎁', '🧸'];
@@ -66,7 +67,7 @@ const HeartCatcherGame = () => {
   return (
     <section className="glass-card p-4 sm:p-8 rounded-3xl border border-pink-500/30 max-w-xl mx-auto my-2 text-center flex flex-col items-center justify-center">
       <h2 className="font-fredoka text-xl sm:text-3xl font-bold text-white mb-1.5 text-center">
-        Catch Sireesha's Love Tokens! 🎮
+        Catch {CONFIG.herName}'s Love Tokens! 🎮
       </h2>
       <p className="text-xs sm:text-base text-pink-100/90 mb-3 text-center px-1">
         Tap as many falling hearts as you can before time runs out! ✨
@@ -83,7 +84,7 @@ const HeartCatcherGame = () => {
         {!isPlaying && !isGameOver && (
           <div className="text-center p-4 z-10 flex flex-col items-center justify-center">
             <Trophy className="w-12 h-12 sm:w-14 sm:h-14 text-amber-300 mx-auto mb-2 animate-bounce" />
-            <p className="text-xs sm:text-base text-pink-200 mb-3 sm:mb-4 font-medium text-center">Ready to test your speed, Sireesha?</p>
+            <p className="text-xs sm:text-base text-pink-200 mb-3 sm:mb-4 font-medium text-center">Ready to test your speed, {CONFIG.herName}?</p>
             <button
               onClick={startGame}
               className="px-6 py-3 sm:px-8 sm:py-3.5 rounded-full bg-pink-600 hover:bg-pink-500 text-white font-fredoka font-semibold text-sm sm:text-base shadow-lg flex items-center justify-center space-x-2 mx-auto active:scale-95 transition-transform"
@@ -118,7 +119,7 @@ const HeartCatcherGame = () => {
           <div className="text-center p-4 z-10 animate-fadeIn flex flex-col items-center justify-center">
             <Sparkles className="w-14 h-14 text-pink-300 mx-auto mb-2 animate-spin" style={{ animationDuration: '3s' }} />
             <h3 className="font-dancing text-4xl sm:text-5xl font-bold text-white glow-text mb-1 text-center">
-              Time's Up, Sireesha! 🎉
+              Time's Up, {CONFIG.herName}! 🎉
             </h3>
             <p className="text-sm sm:text-base text-pink-100 mb-4 text-center">
               You caught <strong className="text-amber-300 text-lg sm:text-xl">{score} hearts</strong>! You are legendary! 👑

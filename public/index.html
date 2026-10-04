@@ -24,7 +24,17 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>For My Dearest Sireesha 💖 | A Special Surprise</title>
+    <title>A Special Birthday Surprise 💖</title>
+    <script>
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var name = params.get('name') || params.get('person') || params.get('to') || params.get('herName') || params.get('user') || 'Sireesha';
+        if (name) {
+          name = name.split(' ').map(function(w){ return w.charAt(0).toUpperCase() + w.slice(1); }).join(' ');
+          document.title = "For My Dearest " + name + " 💖 | A Special Surprise";
+        }
+      } catch (e) {}
+    </script>
     <!-- Google Fonts for romantic and cute aesthetics -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

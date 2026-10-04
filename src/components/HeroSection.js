@@ -14,19 +14,19 @@ const HeroSection = ({ onUnlock, isUnlocked }) => {
   const [showPasscodeModal, setShowPasscodeModal] = useState(false);
 
   const playfulMessages = [
-    "Are you really sure you are Sireesha? Catch me again! 😜",
-    "Too slow! Prove you're the real Sireesha! 🏃‍♀️💨",
+    `Are you really sure you are ${CONFIG.herName}? Catch me again! 😜`,
+    `Too slow! Prove you're the real ${CONFIG.herName}! 🏃‍♀️💨`,
     "Almost convinced! Catch me once more, gorgeous! ✨",
     "Just one more catch to unlock your birthday magic! 👑💖",
-    "🎉 Verified 100%! Releasing birthday balloons! Welcome, Sireesha! 🎈🎈🎈"
+    `🎉 Verified 100%! Releasing birthday balloons! Welcome, ${CONFIG.herName}! 🎈🎈🎈`
   ];
 
   const buttonLabels = [
-    "YES, I'm Sireesha! 🥰 (The Birthday Queen 👑)",
-    "Catch Me, I'm Sireesha! 🏃‍♀️💨 (Too Fast!)",
-    "Over Here, I'm Sireesha! 💕✨ (Loved Ones' Favorite)",
-    "Still Looking For I'm Sireesha? 😜 (Almost Got Me!)",
-    "Final Catch, I'm Sireesha! 🎂💖 (Unlock Surprises!)"
+    `YES, I'm ${CONFIG.herName}! 🥰 (The Birthday Queen 👑)`,
+    `Catch Me, I'm ${CONFIG.herName}! 🏃‍♀️💨 (Too Fast!)`,
+    `Over Here, I'm ${CONFIG.herName}! 💕✨ (${CONFIG.hisName}'s Favorite)`,
+    `Still Looking For ${CONFIG.herName}? 😜 (Almost Got Me!)`,
+    `Final Catch, I'm ${CONFIG.herName}! 🎂💖 (Unlock Surprises!)`
   ];
 
   const handleYesClick = () => {
@@ -178,7 +178,7 @@ const HeroSection = ({ onUnlock, isUnlocked }) => {
             {/* 5th click confirmation banner */}
             {clickCount >= 5 && (
               <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-pink-500 via-rose-500 to-amber-400 text-white font-fredoka font-bold text-sm sm:text-xl animate-pulse shadow-2xl flex flex-col items-center justify-center space-y-1 mb-3">
-                <span>🎉 100% Sireesha Verified! 🎈🎈🎈</span>
+                <span>🎉 100% {CONFIG.herName} Verified! 🎈🎈🎈</span>
                 <span className="text-xs sm:text-sm font-medium text-pink-100">Releasing birthday balloons & unlocking your surprises... 💕</span>
               </div>
             )}

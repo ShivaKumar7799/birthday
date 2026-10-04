@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import confetti from 'canvas-confetti';
 import { Heart } from 'lucide-react';
+import { CONFIG } from '../data/config';
 import { playPop, playWin } from '../utils/sound';
 
 const RunawayButtonGame = () => {
@@ -25,7 +26,7 @@ const RunawayButtonGame = () => {
   return (
     <section className="glass-card p-4 sm:p-8 rounded-3xl border border-pink-500/30 max-w-xl mx-auto my-2 text-center flex flex-col items-center justify-center">
       <h2 className="font-dancing text-3xl sm:text-5xl font-bold text-white mb-2 glow-text text-center">
-        Do You Love Your Loved Ones, Sireesha? 💘
+        Do You Love {CONFIG.hisName}, {CONFIG.herName}? 💘
       </h2>
       <p className="text-xs sm:text-base text-pink-100/90 mb-4 font-medium text-center px-1">
         Choose your honest answer below! 😉
@@ -63,7 +64,7 @@ const RunawayButtonGame = () => {
             I KNEW IT! 🥰
           </h3>
           <p className="text-sm sm:text-base text-pink-100 text-center">
-            I love you infinitely more, Sireesha! You are my world! 💖
+            I love you infinitely more, {CONFIG.herName}! You are my world! 💖
           </p>
         </div>
       )}

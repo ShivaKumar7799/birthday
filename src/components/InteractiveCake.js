@@ -93,7 +93,7 @@ const InteractiveCake = ({ onComplete }) => {
         {/* Bottom Base Layer */}
         <div className="w-52 sm:w-76 h-16 sm:h-20 bg-gradient-to-r from-rose-500 via-pink-500 to-rose-500 rounded-t-xl shadow-2xl border-b-6 sm:border-b-8 border-rose-700 relative flex items-center justify-center">
           <span className="font-dancing text-2xl sm:text-3xl font-bold text-white glow-text text-center">
-            For Sireesha 💕
+            For {CONFIG.herName} 💕
           </span>
         </div>
 
@@ -133,7 +133,7 @@ const InteractiveCake = ({ onComplete }) => {
       {wishMade && (
         <div className="mt-6 p-5 rounded-2xl bg-pink-950/40 border border-pink-500/40 animate-fadeIn w-full flex flex-col items-center justify-center text-center">
           <h3 className="font-dancing text-4xl sm:text-5xl font-bold text-pink-300 glow-text mb-2 text-center">
-            Your Wish is Granted, Sireesha! ✨
+            Your Wish is Granted, {CONFIG.herName}! ✨
           </h3>
           <p className="text-sm sm:text-base text-pink-100 text-center">
             {isSliced 

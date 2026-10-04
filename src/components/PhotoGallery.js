@@ -110,7 +110,7 @@ const PhotoGallery = ({ onComplete }) => {
       {/* Completion Banner */}
       {isAllCompleted && (
         <div className="mt-8 p-5 rounded-2xl bg-gradient-to-r from-pink-500 via-rose-500 to-amber-400 text-white font-fredoka font-bold text-base sm:text-lg animate-pulse shadow-2xl flex flex-col items-center justify-center space-y-1 w-full max-w-lg">
-          <span>🎉 All Memories Explored, Sireesha! 💖</span>
+          <span>🎉 All Memories Explored, {CONFIG.herName}! 💖</span>
           <span className="text-xs sm:text-sm font-medium text-pink-100">
             Unlocking Sky Wish Lanterns & Grand Finale in 2s... 🌟
           </span>

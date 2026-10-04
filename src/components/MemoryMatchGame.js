@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import confetti from 'canvas-confetti';
 import { RefreshCw, Trophy, Heart } from 'lucide-react';
+import { CONFIG } from '../data/config';
 import { playCardFlip, playPop, playWin } from '../utils/sound';
 
 const CARD_ITEMS = ['💖', '🎂', '🎁', '👑', '🌹', '🧸'];
@@ -81,7 +82,7 @@ const MemoryMatchGame = ({ onComplete }) => {
       </div>
 
       <p className="text-xs sm:text-base text-pink-100/90 mb-3 text-center px-1">
-        Match all the cute pairs to prove how sharp Sireesha's mind is! ✨
+        Match all the cute pairs to prove how sharp {CONFIG.herName}'s mind is! ✨
       </p>
 
       <div className="flex items-center justify-center space-x-4 sm:space-x-6 text-xs sm:text-base text-pink-200 font-semibold mb-3.5 px-2 text-center">
@@ -124,7 +125,7 @@ const MemoryMatchGame = ({ onComplete }) => {
         <div className="mt-6 p-5 rounded-2xl bg-gradient-to-r from-pink-600/40 to-purple-600/40 border border-pink-400/60 text-center animate-fadeIn w-full flex flex-col items-center justify-center">
           <Trophy className="w-12 h-12 text-amber-300 mx-auto mb-2 animate-bounce" />
           <h3 className="font-dancing text-4xl sm:text-5xl font-bold text-white glow-text text-center">
-            Amazing Job, Sireesha! 🎉
+            Amazing Job, {CONFIG.herName}! 🎉
           </h3>
           <p className="text-sm sm:text-base text-pink-100 mt-2 text-center">
             You matched all cards in just <strong className="text-amber-300 text-lg">{moves} moves</strong>! Level 1 Complete! 👑

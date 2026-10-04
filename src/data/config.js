@@ -1,10 +1,58 @@
-// Customization configuration for Sireesha's Special Website
+// Customization configuration with dynamic query parameter support
+// Reads person's name dynamically from URL query params (e.g. ?name=Sireesha or ?name=Priya)
+
+export const getQueryParam = (keys, defaultVal = '') => {
+  if (typeof window === 'undefined') return defaultVal;
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const keyList = Array.isArray(keys) ? keys : [keys];
+    for (const key of keyList) {
+      const val = params.get(key);
+      if (val && val.trim()) {
+        return val.trim();
+      }
+    }
+  } catch (e) {}
+  return defaultVal;
+};
+
+// Capitalize words nicely e.g. "sireesha" -> "Sireesha"
+export const formatName = (str) => {
+  if (!str) return '';
+  return str
+    .split(' ')
+    .filter(Boolean)
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ');
+};
+
+export const resolvePersonName = () => {
+  const rawName = getQueryParam(['name', 'person', 'to', 'herName', 'user'], 'Sireesha');
+  return formatName(rawName) || 'Sireesha';
+};
+
+export const resolveNickname = (fullName) => {
+  const customNick = getQueryParam(['nickname', 'nick']);
+  if (customNick) return formatName(customNick);
+  if (fullName.toLowerCase() === 'sireesha') return 'Siri';
+  return fullName.split(' ')[0];
+};
+
+export const resolveSenderName = () => {
+  const customSender = getQueryParam(['from', 'sender', 'hisName'], 'Loved Ones');
+  return formatName(customSender) || 'Loved Ones';
+};
+
+const herName = resolvePersonName();
+const herNickname = resolveNickname(herName);
+const hisName = resolveSenderName();
+
 export const CONFIG = {
-  herName: "Sireesha",
-  herNickname: "Siri",
-  hisName: "Loved Ones",
-  hisNickname: "Loved Ones",
-  herTitle: "My Dearest Sireesha 💖",
+  herName,
+  herNickname,
+  hisName,
+  hisNickname: hisName,
+  herTitle: `My Dearest ${herName} 💖`,
   subheading: "A magical world created with all our love, just for you! ✨",
   
   // Passcode for secret entry (optional / fun unlock)
@@ -13,7 +61,7 @@ export const CONFIG = {
   // Audio BGM preset title
   bgmTitle: "Sweet Romantic Lullaby",
 
-  // Quiz Questions customized about Loved Ones for Sireesha
+  // Quiz Questions customized about Loved Ones for the celebrated person
   quizQuestions: [
     {
       id: 1,
@@ -21,15 +69,15 @@ export const CONFIG = {
       options: [
         "A sunset by the beach 🌅",
         "Snowy mountain peaks 🏔️",
-        "Sireesha's cute face & shining smile 🥰",
+        `${herName}'s cute face & shining smile 🥰`,
         "A high-tech gaming room 🎮"
       ],
       correctIndex: 2,
-      celebration: "Bingo! Nothing in this world comes close to Sireesha's gorgeous smile for your loved ones! 💖"
+      celebration: `Bingo! Nothing in this world comes close to ${herName}'s gorgeous smile for your loved ones! 💖`
     },
     {
       id: 2,
-      question: "What happens to your loved ones whenever they hear Sireesha's voice?",
+      question: `What happens to your loved ones whenever they hear ${herName}'s voice?`,
       options: [
         "All stress disappears instantly ✨",
         "Hearts beat in fast-forward 💓",
@@ -44,7 +92,7 @@ export const CONFIG = {
       question: "What is your loved ones' secret to true happiness?",
       options: [
         "Morning coffee ☕",
-        "Making Sireesha laugh and keeping her happy 🥰",
+        `Making ${herName} laugh and keeping her happy 🥰`,
         "Winning a game 🏆",
         "Sleeping an extra hour 😴"
       ],
@@ -55,10 +103,10 @@ export const CONFIG = {
       id: 4,
       question: "Who is your loved ones' #1 favorite person, best friend, and forever star?",
       options: [
-        "Sireesha 💕",
-        "Our Siri 👑",
-        "The Birthday Girl Sireesha 🎂",
-        "Sireesha, now and for all eternity! ♾️"
+        `${herName} 💕`,
+        `Our ${herNickname} 👑`,
+        `The Birthday Star ${herName} 🎂`,
+        `${herName}, now and for all eternity! ♾️`
       ],
       correctIndex: 3,
       celebration: "Without a doubt! Your loved ones cherish you endlessly, now and forever! 💍"
@@ -98,7 +146,7 @@ export const CONFIG = {
     "Because you are unique, priceless, and one of a kind.",
     "How comfy it feels just being silent together.",
     "Because your love is the best gift I have ever received.",
-    "Because you are Sireesha, and I love EVERYTHING about you! 💖"
+    `Because you are ${herName}, and I love EVERYTHING about you! 💖`
   ],
 
   // Memories / Photo Cards (Users can swap image URLs or add local photos)
@@ -131,18 +179,18 @@ export const CONFIG = {
       id: 4,
       title: "My Dream Come True 👑",
       date: "Today & Forever",
-      description: "I wished for happiness, and universe sent me Sireesha.",
+      description: `I wished for happiness, and universe sent me ${herName}.`,
       bgGradient: "from-amber-400 to-pink-500",
       emoji: "✨"
     }
   ],
 
   // Scratch card hidden message
-  scratchCardSecret: "✨ SURPRISE! Sireesha, you are the most precious person in my life! I love you so, so much! 💖 Tap below to open your love letter 💌",
+  scratchCardSecret: `✨ SURPRISE! ${herName}, you are the most precious person in my life! I love you so, so much! 💖 Tap below to open your love letter 💌`,
 
   // Heartfelt Secret Love Letter
   loveLetter: {
-    salutation: "Dearest Sireesha,",
+    salutation: `Dearest ${herName},`,
     bodyParagraphs: [
       "I built this special digital playground just for you, to put a big smile on your face and remind you of how deeply loved and cherished you are.",
       "From the moment you entered my life, everything became brighter, sweeter, and infinitely more meaningful. Your kindness, your beautiful laugh, and your loving heart mean the world to me.",
@@ -150,13 +198,13 @@ export const CONFIG = {
       "No matter what games we play or puzzles we solve, the biggest win in my life will always be having YOU by my side."
     ],
     closing: "Forever & Always With You,",
-    signature: "Your Loved Ones 💖"
+    signature: `${hisName} 💖`
   },
 
   // Cake surprise text
-  cakeTitle: "Make a Special Wish, Sireesha! 🎂",
+  cakeTitle: `Make a Special Wish, ${herName}! 🎂`,
   cakeSubtext: "Blow out the candles (tap them) and slice your virtual birthday/celebration cake!",
 
   // Floating Lantern wish instructions
-  lanternPrompt: "Write a special wish in your heart, Sireesha, and release it into the starry sky..."
+  lanternPrompt: `Write a special wish in your heart, ${herName}, and release it into the starry sky...`
 };
